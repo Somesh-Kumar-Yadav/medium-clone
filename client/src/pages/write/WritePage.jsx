@@ -195,7 +195,8 @@ your writing.</h1>
           </div>
 
 
-          {/* section 6 */}
+      {/* section 6 */}
+      {/* <div></div> */}
     </div>
   );
 };
