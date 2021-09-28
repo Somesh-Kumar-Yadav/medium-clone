@@ -134,6 +134,60 @@ const WritePage = () => {
           </div>
 
           {/* section 4 */}
+
+          <div className={styles.sec4}>
+              <div className={styles.top}>
+                  <h1>Find and grow your <br />
+audience.</h1>
+                  <p>With simple tools and features, you have the chance to connect with over 100 million curious readers.</p>
+              </div>
+              <div className={styles.bottom}>
+                  <div className={styles.left}>
+                      <h1>Audience insights.</h1>
+                      <p>Use data to learn what resonates with your readers so you can keep growing.</p>
+                      <img src="https://cdn-static-1.medium.com/sites/medium.com/creators/images/creator-find-points-iphones.png" alt="" />
+                  </div>
+                  <div className={styles.right}>
+                      <div className={styles.top}>
+                          <div className={styles.items}>
+                              <h1>Social connectivity.</h1>
+                              <p>Find people you’re already connected with on Twitter and easily share your stories across platforms.</p>
+                          </div>
+                          <div className={styles.items}>
+                              <h1>Powerful network.</h1>
+                              <p>Readers can discover and follow you easily with tailored feeds and recommendations.</p>
+                          </div>
+                      </div>
+                      <div className={styles.top}>
+                          <div className={styles.items}>
+                              <h1>Email subscriptions.</h1>
+                              <p>Reach readers by having your stories delivered straight to their inboxes.</p>
+                          </div>
+                          <div className={styles.items}>
+                              <h1>Interactive discussions.</h1>
+                              <p>Build relationships with your readers through a threaded comments section.</p>
+                          </div>
+                          <div className={styles.items}>
+                              <h1>Personalized design.</h1>
+                              <p>Easily customize your page to stand out and build your brand.</p>
+                          </div>
+                      </div>
+                      <div className={styles.bottom}></div>
+                  </div>
+              </div>
+          </div>
+
+          {/* section 5 */}
+          <div className={styles.sec5}>
+              <img src="" alt="" />
+                <h1 className={styles.heading}>Earn money from <br />
+your writing.</h1>
+                <p className={styles.quote}>Writing has its rewards when you join the Partner Program. Learn how to get paid for the content you publish and the audiences you build.</p>
+                <div className={styles.btn}>Learn more</div>
+          </div>
+
+
+          {/* section 6 */}
     </div>
   );
 };
