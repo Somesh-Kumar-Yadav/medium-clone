@@ -1,14 +1,9 @@
-import styles from "./App.module.css";
-import { NavBar } from "./components/LandingPage/NavBar";
-import { WritePage } from "./pages/write/WritePage";
+import React from 'react'
 
-function App() {
-	return (
-		<div className={styles.App}>
-			<NavBar />
-			<WritePage/>
-		</div>
-	);
+export const App = () => {
+    return (
+        <div>
+            dummy
+        </div>
+    )
 }
-
-export default App;
