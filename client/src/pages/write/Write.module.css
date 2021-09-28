@@ -12,7 +12,7 @@
 }
 
 .sec1 .left{
-    padding: 2rem;
+    padding: 3rem;
     border-right: 1px solid black;
     flex: 0.9;
 }
@@ -47,7 +47,7 @@ font-size: 18px;
 }
 
 .sec1 .right{
-    padding: 2rem;
+    padding: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +61,7 @@ font-size: 18px;
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
-    padding: 2rem;
+    padding: 3rem;
 }
 
 .sec2 .left{
@@ -116,7 +116,7 @@ letter-spacing: -4px;
  }
 
   .write .sec3 .top .left{
-      padding: 2rem;
+      padding: 3rem;
       display: flex;
       flex-direction:column;
       justify-content: space-between;
@@ -158,7 +158,7 @@ padding: 4rem 3rem 0 2rem;
   }
 
   .sec3 .bottom .item{
-    padding: 2rem;
+    padding: 3rem;
     border-right: 1px solid #000
   }
 
@@ -265,7 +265,7 @@ padding: 4rem 2rem;
     .sec5 .quote{
         width:40%;
         font-size: 18px;
-        padding: 0.6rem 0;
+        padding: 0.8rem 0;
     }
     .sec5 .btn{
 
