@@ -1,6 +1,7 @@
 import React from "react";
 import { Nav } from "../../styled-components/components";
 import styles from "../../styles/NavBar.module.css"
+import {Link} from 'react-router-dom'
 
 export const NavBar = () => {
     return <React.Fragment>
@@ -14,7 +15,7 @@ export const NavBar = () => {
             <div className={styles.nav_tabs}>
                 <span>Our Story</span>
                 <span>Membership</span>
-                <span>Write</span>
+                <span><Link to="/creator">Write</Link></span>
                 <span>Sign In</span>
                 <span className={styles.nav_tabs_started}>Get Started</span>
             </div>
