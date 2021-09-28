@@ -1,10 +1,10 @@
 import styles from "./App.module.css";
-import { NavBar } from "./components/LandingPage/NavBar";
+import Routes from "./routes/Routes";
 
 function App() {
 	return (
 		<div className={styles.App}>
-			<NavBar />
+			<Routes />
 		</div>
 	);
 }
