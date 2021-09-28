@@ -1,9 +1,17 @@
 import React from "react";
 import styles from "./Write.module.css";
+import {Nav} from '../../styled-components/components'
 
 const WritePage = () => {
   return (
     <div className={styles.write}>
+      {/* navbar */}
+
+      <Nav color="#F24D2E">
+        
+      </Nav>
+
+
       {/* section 1 */}
       <div className={styles.sec1}>
         <div className={styles.left}>
