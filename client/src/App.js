@@ -1,10 +1,12 @@
 import styles from "./App.module.css";
-import Routes from "./routes/Routes";
+import { HomePage } from "./components/HomePage/HomePage";
+// import Routes from "./routes/Routes";
 
 function App() {
 	return (
 		<div className={styles.App}>
-			<Routes />
+			{/* <Routes /> */}
+			<HomePage />
 		</div>
 	);
 }
