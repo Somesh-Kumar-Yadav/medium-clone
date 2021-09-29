@@ -4,7 +4,6 @@ import { NavBar } from "../../components/LandingPage/NavBar";
 import { Acordian } from "../../components/acordian/Acordian";
 
 const WritePage = () => {
-  document.title = "Creators";
 
   const [active, setActive] = useState("");
 
