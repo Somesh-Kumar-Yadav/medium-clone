@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Write.module.css";
 import {Nav} from '../../styled-components/components'
+import { Acordian } from "../../components/acordian/Acordian";
 
 const WritePage = () => {
+  document.title = "Creators"
+  
+  const [active, setActive] = useState("")
+
   return (
     <div className={styles.write}>
       {/* navbar */}
@@ -196,9 +201,22 @@ your writing.</h1>
 
 
       {/* section 6 */}
-      {/* <div></div> */}
+      <div className={styles.sec6}>
+        <div><h1 className={styles.heading}>More about writing on Medium:</h1></div>
+        <Acordian ans="First, make a free account. Then, to create a story, click on your profile picture in the top-right corner of the page, then “Write a Story.”" title={"How do I start writing on Medium?"} active={active} setActive={setActive}/>
+        <Acordian ans="Anyone can write on Medium. Whether you’ve never written before or are ready to create a full publication, it’s easy to get started and we allow you to focus more on big ideas and less on driving clicks. With the option to earn for your work, you can also be directly rewarded for the value you provide readers." title={"Who writes on Medium?"} active={active} setActive={setActive}/>
+        <Acordian ans="If you join the Medium Partner Program, you can earn money based on how much time members spend reading your work and whenever you convert non-paying readers into members." title={"How can I make money writing on Medium?"} active={active} setActive={setActive}/>
+        <Acordian ans="No. You can write on Medium even if you are not in the Partner Program. If you are in the Partner Program you can also choose which of the stories you publish are eligible for the Program. For more about the Partner Program, click here." title={"Do I need to be in the Partner Program to write on Medium?"} active={active} setActive={setActive}/>
+        <Acordian ans="Anyone on the internet can read your stories. Even if your story is being distributed in the Partner Program as a part of our metered paywall, anyone can still read a limited number of articles for free each month. If you want to share an un-metered version of your story, you can use a Friend Link." title={"Who can read the work I publish on Medium?"} active={active} setActive={setActive}/>
+        <Acordian ans="For the latest guides, resources, and inspiration for creators on Medium, follow Creators Hub, the official Medium blog for writers." title={"Where can I get updates and plug into the creator community?"} active={active} setActive={setActive}/>
+        <Acordian ans="Medium has a number of tools to connect you with over 100 million readers on the platform and beyond. Some ways you can build your audience are by starting a newsletter,  submitting to publications, following the distribution standards, and sharing your stories on social media. We also encourage you to check out our blog, 3 Minute Read, for more helpful tips and tricks – like how to write a great headline and SEO tips to make your stories more discoverable." title={"How can I grow my audience with Medium?"} active={active} setActive={setActive}/>
+        <div className={styles.bottom}>
+          <p>Looking for help getting started?</p>
+          <div className={styles.btn}>Check out our guides.</div>
+        </div>
+      </div>
     </div>
-  );
+  )
 };
 
 export { WritePage };
