@@ -1,0 +1,49 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    width: 100%;
+    margin: auto;
+}
+.acordian{
+    width: 100%;
+    padding: 0.5rem 3rem;
+    border-bottom: 1px solid white;
+}
+
+.acordianHeading{
+    padding: 0.2rem 0;
+}
+.acordianHeading .container{
+    padding:0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+   
+}
+.acordianHeading p{
+    font-size:22px;
+    font-weight:500;
+}
+.acordianHeading span{
+    font-size:24px
+}
+
+.acordianContent{
+    padding: 0.5rem 0;
+    /* background-color:aqua; */
+    height: 0;
+    opacity: 0;
+    display: flex;
+    overflow: hidden;
+     transition: all 0.2s ease-in-out;
+}
+
+.acordianContent.show{
+    height: 100vh;
+    opacity: 1;
+}
