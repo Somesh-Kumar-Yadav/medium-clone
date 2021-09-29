@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
 			user = await User.create({
 				name: req.body.name,
 				email: req.body.email,
-				familyName: req.body.familyName,
+				description: req.body.familyName,
 				givenName: req.body.givenName,
 				imageUrl: req.body.imageUrl,
 				followers: [],
@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
 	try {
 		users = await User.find().lean().exec();
 
-		return res.status(201).json({ users });
+		return res.status(200).json({ users });
 	} catch (e) {
 		return res
 			.status(400)
