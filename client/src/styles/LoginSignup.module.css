@@ -1,0 +1,60 @@
+/* MODAL */
+.modal {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+.modal_p {
+  color: rgb(85, 85, 85);
+  font-size: 12px;
+}
+.modal_span {
+  text-decoration: underline;
+}
+
+/* LOGIN */
+.login {
+  text-align: center;
+  margin: 15px;
+  padding: 20px;
+}
+
+.login_h2 {
+  font-weight: 500;
+  margin-bottom: 80px;
+  margin-top: 50px;
+}
+.btn {
+  width: 240px;
+  border: 1.2px solid gray;
+  border-radius: 50px;
+  display: flex;
+  margin: auto;
+  cursor: pointer;
+  padding: 1px;
+  padding-left: 14px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+.btn_image {
+  width: 26px;
+  margin-top: 4px;
+  border-radius: 50%;
+}
+.btn_p {
+  color: rgb(27, 27, 27);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 10px;
+}
+.login_h6 {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.login_h6_span {
+  font-weight: 800;
+  color: green;
+  cursor: pointer;
+}
