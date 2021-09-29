@@ -1,63 +1,68 @@
 .nav_logo {
-	height: 28px;
-	fill: rgba(0, 0, 0, 1);
-	margin-left: 40px;
-	cursor: pointer;
+  height: 28px;
+  fill: rgba(0, 0, 0, 1);
+  margin-left: 40px;
+  cursor: pointer;
 }
 .nav_tabs {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 .nav_tabs > span {
-	font-size: 16px;
-	cursor: pointer;
-	padding: 8px 0;
-	margin: 0 15px;
-	display: flex;
-	align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 0;
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
 }
 .nav_tabs > span > input {
-	outline: none;
-	width: 180px;
-	height: 30px;
-	font-size: 16px;
-	margin-left: 5px;
-	border: none;
+  outline: none;
+  width: 180px;
+  height: 30px;
+  font-size: 16px;
+  margin-left: 5px;
+  border: none;
 }
 .nav_tabs > span > svg {
-	fill: rgba(117, 117, 117, 1);
-	height: 25px;
-	width: 25px;
+  fill: rgba(117, 117, 117, 1);
+  height: 25px;
+  width: 25px;
 }
 .nav_tabs .nav_tabs_started {
-	padding: 12px;
-	margin-right: 60px;
-	color: white;
-	background: #191919;
-	border-radius: 20px;
+  padding: 12px;
+  margin-right: 60px;
+  color: white;
+  background: #191919;
+  border-radius: 20px;
 }
 .nav_tabs .nav_tabs_started_2 {
-	padding: 8px 12px;
-	color: #191919;
-	background: white;
-	border: 1px solid #191919;
-	border-radius: 20px;
-	font-size: 16px;
+  padding: 8px 12px;
+  color: #191919;
+  background: white;
+  border: 1px solid #191919;
+  border-radius: 20px;
+  font-size: 16px;
 }
 .nav_tabs_started_logo {
-	font-size: 50px;
-	color: white;
-	text-align: center;
-	height: 40px;
-	width: 40px;
-	border-radius: 50%;
-	background: green;
-	font-weight: 500;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-right: 60px !important;
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: green;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 60px !important;
 }
 .nav_tabs > span > input::placeholder {
-	font-size: 16px;
+  font-size: 16px;
+}
+
+.userProfile {
+  border-radius: 50%;
+  width: 100%;
 }
