@@ -285,3 +285,41 @@ padding: 4rem 2rem;
     cursor: pointer;
     color: #000;
 }
+
+/* section 6 */
+
+.sec6{
+    background-color: #000;
+    color: #fff;
+    /* min-height: 100vh; */
+    padding: 3rem 0 1.5rem;
+}
+.sec6 .heading{
+    font-family: "Times new roman";
+         font-size:3.5rem;
+         font-weight: 400;
+    letter-spacing:-2px;
+    line-height: 80px;
+    padding: 1rem 3rem 3rem;
+}
+.sec6 .bottom{
+    display: flex;
+    justify-content:center;
+    padding: 2rem 0;
+    font-size: 22px;
+    align-items:center;
+}
+
+.sec6 .bottom .btn{
+    padding: 0.4rem 1rem;
+    background-color:#fff;
+    border-radius: 2rem;
+    margin: 0 0.5rem;
+    color: #000;
+}
+.sec6 .bottom .btn:hover{
+    background-color: transparent;
+    border: 1px solid white;
+    cursor: pointer;
+    color: #fff;
+}
