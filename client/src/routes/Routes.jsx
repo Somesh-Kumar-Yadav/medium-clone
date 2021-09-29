@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router";
 import { LandingPage } from "../components/LandingPage/LandingPage";
 import { WritePage } from "../pages/write/WritePage";
 import { HomePage } from "../components/HomePage/HomePage";
+import { OurStroryPage } from "../components/OurStoryPage/OurStoryPage";
 
 export default function Routes() {
   let data = localStorage.getItem("login");
@@ -15,6 +16,9 @@ export default function Routes() {
         </Route>
         <Route path="/creator">
           <WritePage />
+        </Route>
+        <Route path="/story">
+          <OurStroryPage/>
         </Route>
       </Switch>
     </>
