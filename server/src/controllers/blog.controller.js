@@ -3,7 +3,6 @@ const { multerUploads } = require("../middlewares/multer");
 const upload = require("../middlewares/upload");
 const Blog = require("../models/blog.model");
 const Topic = require("../models/topics.model");
-const User = require("../models/user.model");
 const router = express.Router();
 
 router.post("/", multerUploads, upload, async (req, res) => {

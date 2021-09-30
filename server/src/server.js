@@ -5,8 +5,7 @@ const cors = require("cors");
 const userController = require("./controllers/user.controller");
 const topicsController = require("./controllers/topics.controller");
 const blogsController = require("./controllers/blog.controller");
-const { multerUploads } = require("./middlewares/multer");
-const upload = require("./middlewares/upload");
+const routeController = require("./routes/routes");
 const connect = require("./configs/db");
 
 require("dotenv").config();
@@ -22,6 +21,7 @@ app.use("*", cloudinaryConfig);
 app.use("/users", userController);
 app.use("/topics", topicsController);
 app.use("/blogs", blogsController);
+app.use("/", routeController);
 
 const port = process.env.SERVER_PORT || "2345";
 

@@ -31,19 +31,5 @@ let UserSchema = new mongoose.Schema(
 		versionKey: false,
 	}
 );
-UserSchema.methods.follow = function (userId) {
-	if (this.following.indexOf(userId) === -1) {
-		this.following.push(userId);
-	}
-	return this.save();
-};
-UserSchema.methods.topics = function (topicId) {
-	if (this.followingTopics.indexOf(topicId) === -1) {
-		this.followingTopics.push(topicId);
-	}
-	return this.save();
-};
-UserSchema.methods.addFollower = function (fs) {
-	this.followers.push(fs);
-};
+
 module.exports = mongoose.model("User", UserSchema);

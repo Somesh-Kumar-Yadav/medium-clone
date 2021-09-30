@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
 			user = await User.create({
 				name: req.body.name,
 				email: req.body.email,
-				description: req.body.familyName,
+				familyName: req.body.familyName,
 				givenName: req.body.givenName,
 				imageUrl: req.body.imageUrl,
 				followers: [],
