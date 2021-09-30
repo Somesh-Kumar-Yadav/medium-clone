@@ -2,7 +2,6 @@ const { dataUri } = require("./multer");
 const { uploader } = require("../configs/cloudinaryConfig");
 
 const upload = (req, res, next) => {
-	console.log(req);
 	if (req.file) {
 		const file = dataUri(req).content;
 		return uploader

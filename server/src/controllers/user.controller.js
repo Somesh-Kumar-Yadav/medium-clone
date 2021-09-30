@@ -39,5 +39,36 @@ router.get("/", async (req, res) => {
 			.send({ status: "failed", message: "Something went wrong" });
 	}
 });
-
+router.get("/:id", async (req, res) => {
+	try {
+		const user = await User.findById(req.params.id).lean().exec();
+		return res.status(200).json({ user });
+	} catch (e) {
+		return res
+			.status(400)
+			.send({ status: "failed", message: "Something went wrong" });
+	}
+});
+router.patch("/:id", async (req, res) => {
+	try {
+		const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+			new: true,
+		});
+		return res.status(200).json({ user });
+	} catch (e) {
+		return res
+			.status(400)
+			.send({ status: "failed", message: "Something went wrong" });
+	}
+});
+router.delete("/:id", async (req, res) => {
+	try {
+		const user = await User.findByIdAndDelete(req.params.id);
+		return res.status(200).json({ user });
+	} catch (e) {
+		return res
+			.status(400)
+			.send({ status: "failed", message: "Something went wrong" });
+	}
+});
 module.exports = router;
