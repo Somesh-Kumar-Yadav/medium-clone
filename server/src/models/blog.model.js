@@ -31,21 +31,5 @@ let BlogSchema = new mongoose.Schema(
 		versionKey: false,
 	}
 );
-BlogSchema.methods.clap = function () {
-	this.claps++;
-	return this.save();
-};
-BlogSchema.methods.comment = function (c) {
-	this.comments.push(c);
-	return this.save();
-};
-BlogSchema.methods.addAuthor = function (authorId) {
-	this.author = authorId;
-	return this.save();
-};
-BlogSchema.methods.getUserArticle = function (_id) {
-	Blog.find({ author: _id }).then((blog) => {
-		return blog;
-	});
-};
+
 module.exports = mongoose.model("Blog", BlogSchema);
