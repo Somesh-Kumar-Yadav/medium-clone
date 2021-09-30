@@ -5,6 +5,7 @@ import { WritePage } from "../pages/write/WritePage";
 import { HomePage } from "../components/HomePage/HomePage";
 import { OurStroryPage } from "../components/OurStoryPage/OurStoryPage";
 import { CreateStrory } from "../pages/createStory/CreateStrory";
+import Membership from "../components/Membership/Membership";
 
 export default function Routes() {
   let data = localStorage.getItem("login");
@@ -23,6 +24,9 @@ export default function Routes() {
         </Route>
         <Route path="/newStory">
           <CreateStrory/>
+          </Route>
+        <Route path="/membership">
+          <Membership />
         </Route>
       </Switch>
     </>
