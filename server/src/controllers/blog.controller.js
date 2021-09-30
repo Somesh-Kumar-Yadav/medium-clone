@@ -1,17 +1,17 @@
 const express = require("express");
-
+const { multerUploads } = require("../middlewares/multer");
+const upload = require("../middlewares/upload");
 const Blog = require("../models/blog.model");
-
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", multerUploads, upload, async (req, res) => {
 	let blog;
 	try {
 		blog = await Blog.create({
-			text: req.body.name,
-			title: req.body.email,
-			familyName: req.body.familyName,
-			featureImg: req.body.givenName,
+			text: req.body.text,
+			title: req.body.title,
+			description: req.body.description,
+			featureImg: req.image,
 			claps: 0,
 			author: req.body.author,
 			comments: [],

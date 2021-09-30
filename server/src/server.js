@@ -1,21 +1,34 @@
 const express = require("express");
+const { urlencoded, json } = require("body-parser");
+const { cloudinaryConfig } = require("./configs/cloudinaryConfig");
 const cors = require("cors");
 const userController = require("./controllers/user.controller");
 const topicsController = require("./controllers/topics.controller");
+const blogsController = require("./controllers/blog.controller");
+const { multerUploads } = require("./middlewares/multer");
+const upload = require("./middlewares/upload");
+const connect = require("./configs/db");
 
 require("dotenv").config();
 
-const connect = require("./configs/db");
-
 const app = express();
+
 app.use(express.json());
 app.use(cors());
+app.use(urlencoded({ extended: false }));
+app.use(json());
+app.use("*", cloudinaryConfig);
+
 app.use("/users", userController);
 app.use("/topics", topicsController);
+app.use("/blogs", blogsController);
+
+const port = process.env.SERVER_PORT || "2345";
+
 const start = async () => {
 	await connect();
-	app.listen(process.env.SERVER_PORT, () => {
-		console.log("Hurray! listening to port no", process.env.SERVER_PORT);
+	app.listen(port, () => {
+		console.log("Hurray! listening to port no", port);
 	});
 };
 
