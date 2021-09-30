@@ -8,7 +8,7 @@ export const NavBar = ({ color }) => {
   const loginUser = localStorage.getItem("login");
   console.warn("loginUser", loginUser);
   const [open, setOpen] = useState(false);
-  const history = useHistory()
+  const history = useHistory();
   return (
     <React.Fragment>
       <Nav color={color}>
@@ -20,11 +20,9 @@ export const NavBar = ({ color }) => {
         {open ? <LoginSignup status={open} set={setOpen} /> : null}
 
         <div className={styles.nav_tabs}>
-          <span  onClick={()=>history.push("/story")}>Our Story</span>
+          <span onClick={() => history.push("/story")}>Our Story</span>
           <span>Membership</span>
-          <span onClick={()=>history.push("/creator")}>
-            Write
-          </span>
+          <span onClick={() => history.push("/creator")}>Write</span>
           <span onClick={() => setOpen(true)}>Sign In</span>
           <span
             onClick={() => setOpen(true)}

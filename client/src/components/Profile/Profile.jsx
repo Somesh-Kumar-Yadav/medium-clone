@@ -1,32 +1,47 @@
 import React from "react";
-import styles from "../../styles/Profile.module.css";
+import "./styles.css";
+import { GoogleLogout } from "react-google-login";
+import GoogleButton from "react-google-button";
 
 const Profile = ({ data }) => {
+  const logoutres = () => {
+    alert("You have successfully Logged Out");
+    localStorage.removeItem("login");
+    document.location.href = "http://localhost:3000";
+  };
   return (
-    <div className={styles.profile}>
-      <div className={styles.header}>
-        <img className={styles.profileImage} src={data.imageUrl} alt="" />
-        <h4>{data.name}</h4>
-        <p>{data.email}</p>
-        <hr className={styles.line} />
-      </div>
-      <div className={styles.base}>
-        <p className={styles.links}>Write a story</p>
-        <p className={styles.links}>Stories</p>
-        <p className={styles.links}>Settings</p>
-      </div>
-      <hr className={styles.line} />
-      <div className={styles.base}>
-        <p className={styles.links}>Write a story</p>
-        <p className={styles.links}>Write a story</p>
-        <p className={styles.links}>Write a story</p>
-        <p className={styles.links}>Write a story</p>
-      </div>
-      <hr className={styles.line} />
-      <div className={styles.base}>
-        <p className={styles.links}>Write a story</p>
-        <p className={styles.links}>Write a story</p>
-        <p className={styles.links}>Sign out</p>
+    <div>
+      <div className="dropdown" style={{ float: "right" }}>
+        <img className="profileimage" src={data.imageUrl} alt="" />
+        <div className="dropdown_content">
+          <div className="profileHeader">
+            <img className="profilePic" src={data.imageUrl} alt="" />
+            <h5>{data.name}</h5>
+          </div>
+          <hr className="line" />
+          <a href="#">Stories</a>
+          <a href="#">Write a Story</a>
+          <div>
+            <GoogleLogout
+              clientId="378817930652-26drd8dhlmr4qet0ilu2qts92m12mpdr.apps.googleusercontent.com"
+              tag="p"
+              render={(renderProps) => (
+                <button
+                  className="logoutbtn"
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                >
+                  Sign Out
+                </button>
+              )}
+              className="googleout"
+              icon={false}
+              onLogoutSuccess={logoutres}
+            >
+              <p>Sign out</p>
+            </GoogleLogout>
+          </div>
+        </div>
       </div>
     </div>
   );

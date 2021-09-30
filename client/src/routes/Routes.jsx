@@ -18,7 +18,7 @@ export default function Routes() {
           <WritePage />
         </Route>
         <Route path="/story">
-          <OurStroryPage/>
+          <OurStroryPage />
         </Route>
       </Switch>
     </>
