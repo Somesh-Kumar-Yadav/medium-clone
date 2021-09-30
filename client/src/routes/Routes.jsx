@@ -4,6 +4,7 @@ import { LandingPage } from "../components/LandingPage/LandingPage";
 import { WritePage } from "../pages/write/WritePage";
 import { HomePage } from "../components/HomePage/HomePage";
 import { OurStroryPage } from "../components/OurStoryPage/OurStoryPage";
+import { CreateStrory } from "../pages/createStory/CreateStrory";
 
 export default function Routes() {
   let data = localStorage.getItem("login");
@@ -19,6 +20,9 @@ export default function Routes() {
         </Route>
         <Route path="/story">
           <OurStroryPage />
+        </Route>
+        <Route path="/newStory">
+          <CreateStrory/>
         </Route>
       </Switch>
     </>
