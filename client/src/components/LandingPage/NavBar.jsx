@@ -21,7 +21,7 @@ export const NavBar = ({ color }) => {
 
         <div className={styles.nav_tabs}>
           <span onClick={() => history.push("/story")}>Our Story</span>
-          <span>Membership</span>
+          <span onClick={() => history.push("/membership")}>Membership</span>
           <span onClick={() => history.push("/creator")}>Write</span>
           <span onClick={() => setOpen(true)}>Sign In</span>
           <span
