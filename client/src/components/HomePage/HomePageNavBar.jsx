@@ -3,9 +3,10 @@ import { HomeNav } from "../../styled-components/components";
 import styles from "../../styles/NavBar.module.css";
 import Profile from "../Profile/Profile";
 
+
 export const HomePageNavBar = ({ data }) => {
-  const [show, setShow] = React.useState(false);
-  document.addEventListener("mousedown", () => setShow(false));
+  
+
   data = JSON.parse(data);
   // console.log("data on navbar homepage", data);
   const [searchBox, setSearchBox] = React.useState(false);
@@ -52,12 +53,8 @@ export const HomePageNavBar = ({ data }) => {
             </svg>
           </span>
           <span className={styles.nav_tabs_started_2}>Upgrade</span>
-          <span
-            onClick={() => setShow(true)}
-            className={styles.nav_tabs_started_logo}
-          >
-            <img className={styles.userProfile} src={data.imageUrl} alt="" />
-            {show ? <Profile data={data} /> : null}
+          <span>
+            <Profile data={data} />
           </span>
         </div>
       </HomeNav>

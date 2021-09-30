@@ -1,0 +1,86 @@
+.maindiv {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  background-color: #4479ff;
+  text-align: center;
+  color: white;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.heading {
+  font-size: 100px;
+  margin-bottom: 5px;
+}
+.btn1 {
+  background-color: white;
+  cursor: pointer;
+  border: 2px solid #4479ff;
+  color: black;
+  padding: 13px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  width: 200px;
+  font-size: 17px;
+  border-radius: 50px;
+}
+.btn1:hover {
+  background-color: #4479ff;
+  color: white;
+  border: 2px solid white;
+}
+.maindiv2 {
+  background-color: #4479ff;
+  color: white;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.innerdiv {
+  padding: 20px;
+}
+.line {
+  background-color: white;
+  border: ipx solid white;
+}
+.innerdivp1 {
+  font-size: 45px;
+  margin-bottom: 30px;
+}
+.innerdivp2 {
+  font-size: 20px;
+  margin-top: 30px;
+}
+.maindiv3 {
+  background-color: white;
+  text-align: center;
+}
+.maindiv3p1 {
+  font-size: 50px;
+  padding: 50px;
+}
+.maindiv4 {
+  padding-top: 40px;
+  text-align: center;
+  font-size: 110px;
+  background-color: #bcdfff;
+  border: 1px solid black;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background-color: black;
+  color: white;
+  padding: 11px;
+  width: 250px;
+  font-size: 16px;
+  border-radius: 50px;
+  border: 2px solid black;
+  cursor: pointer;
+  position: absolute;
+  left: 41%;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background-color: rgb(24, 24, 24);
+}
