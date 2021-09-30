@@ -30,7 +30,12 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
 	let users;
 	try {
-		users = await User.find().lean().exec();
+		users = await User.find()
+			.populate("followers")
+			.populate("followingTopics")
+			.populate("following")
+			.lean()
+			.exec();
 
 		return res.status(200).json({ users });
 	} catch (e) {
@@ -41,7 +46,12 @@ router.get("/", async (req, res) => {
 });
 router.get("/:id", async (req, res) => {
 	try {
-		const user = await User.findById(req.params.id).lean().exec();
+		const user = await User.findById(req.params.id)
+			.populate("followers")
+			.populate("followingTopics")
+			.populate("following")
+			.lean()
+			.exec();
 		return res.status(200).json({ user });
 	} catch (e) {
 		return res

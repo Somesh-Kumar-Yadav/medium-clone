@@ -3,6 +3,7 @@ const { multerUploads } = require("../middlewares/multer");
 const upload = require("../middlewares/upload");
 const Blog = require("../models/blog.model");
 const Topic = require("../models/topics.model");
+const User = require("../models/user.model");
 const router = express.Router();
 
 router.post("/", multerUploads, upload, async (req, res) => {
@@ -35,7 +36,12 @@ router.post("/", multerUploads, upload, async (req, res) => {
 router.get("/", async (req, res) => {
 	let blogs;
 	try {
-		blogs = await Blog.find().lean().exec();
+		blogs = await Blog.find()
+			.populate("author")
+			.populate("topic")
+			.populate("comments.author")
+			.lean()
+			.exec();
 
 		return res.status(200).json({ blogs });
 	} catch (e) {
@@ -46,7 +52,12 @@ router.get("/", async (req, res) => {
 });
 router.get("/:id", async (req, res) => {
 	try {
-		const blog = await Blog.findById(req.params.id).lean().exec();
+		const blog = await Blog.findById(req.params.id)
+			.populate("author")
+			.populate("topic")
+			.populate("comments.author")
+			.lean()
+			.exec();
 		return res.status(200).json({ blog });
 	} catch (e) {
 		return res
