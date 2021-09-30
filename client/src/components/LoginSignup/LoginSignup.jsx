@@ -10,7 +10,7 @@ const LoginSignup = ({ status, set }) => {
   //console.log(status, set);
   return (
     <div>
-      <Modal open={status} onClose={() => set(false)} center>
+      <Modal open={status} onClose={() => set(false)}>
         <div className={styles.modal}>
           {swapLogin ? (
             <Login swap={setswapLogin} status={swapLogin} />

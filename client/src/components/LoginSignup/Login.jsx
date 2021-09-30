@@ -38,7 +38,7 @@ const Login = ({ swap, status }) => {
         buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
-        isSignedIn={true}
+        // isSignedIn={true}
         cookiePolicy={"single_host_origin"}
       />
       <button className={styles.btn} disabled>

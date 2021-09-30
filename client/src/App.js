@@ -1,14 +1,12 @@
 import styles from "./App.module.css";
-import { NavBar } from "./components/LandingPage/NavBar";
-import { OurStroryPage } from "./components/OurStoryPage/OurStoryPage";
+import Routes from "./routes/Routes";
 
 function App() {
-  return (
-    <div className={styles.App}>
-      <NavBar />
-      <OurStroryPage />
-    </div>
-  );
+	return (
+		<div className={styles.App}>
+			<Routes />
+		</div>
+	);
 }
 
 export default App;
