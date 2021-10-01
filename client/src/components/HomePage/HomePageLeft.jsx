@@ -7,13 +7,14 @@ import { useSelector } from "react-redux"
 
 export const HomePageLeft = () => {
     const [tabs, setTabs] = React.useState(true);
+    const user = useSelector(state => state.auth.user.user);
     const blogs = useSelector(state => state.auth.blogs);
     return <div className={styles.home_page_left}>
         <div className={styles.home_page_left_top}>
             <span className={styles.home_topics_heading}>Your Topics</span>
             {
-                Array(3).fill(0).map(item => {
-                    return <HomePageTopics/>
+                user.followingTopics.map((item,i) => {
+                    return <HomePageTopics key={i} topic={item} />
                 })
             }
         </div>

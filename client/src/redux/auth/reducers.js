@@ -18,7 +18,7 @@ const initState = {
 	topics: [],
 	trending: [],
 	isError: false,
-	isLoading: true,
+	isLoading: false,
 };
 export const authReducer = (state = initState, { type, payload }) => {
 	switch (type) {
