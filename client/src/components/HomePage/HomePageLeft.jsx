@@ -7,6 +7,7 @@ import { useSelector } from "react-redux"
 
 export const HomePageLeft = () => {
     const [tabs, setTabs] = React.useState(true);
+    const followedBlogs = useSelector(state=>state.user.blogs)
     const user = useSelector(state => state.auth.user.user);
     const blogs = useSelector(state => state.auth.blogs);
     return <div className={styles.home_page_left}>
@@ -22,12 +23,18 @@ export const HomePageLeft = () => {
             <Tabs onClick={()=>setTabs(false)} tab={tabs} val={false}>Following</Tabs>
             <Tabs onClick={()=>setTabs(true)} tab={tabs} val={true}>Recommended for you</Tabs>
         </div>
-        <div className={styles.home_page_left_bottom}>
+        {tabs?<div className={styles.home_page_left_bottom}>
             {
                 blogs.map((item) => {
                     return <BlogCard key={item._id} blog={ item}/>
                 })
             }
-        </div>
+        </div>:<div className={styles.home_page_left_bottom}>
+            {
+                followedBlogs.map((item) => {
+                    return <BlogCard key={item._id} blog={ item}/>
+                })
+            }
+        </div>}
    </div>
 }
