@@ -23,8 +23,8 @@ const Profile = () => {
             <h5>{user.name}</h5>
           </div>
           <hr className="line" />
-          <p>Stories</p>
-          <p>Write a Story</p>
+          <p className="links">Stories</p>
+          <p className="links">Write a Story</p>
           <div>
             <GoogleLogout
               clientId="378817930652-26drd8dhlmr4qet0ilu2qts92m12mpdr.apps.googleusercontent.com"

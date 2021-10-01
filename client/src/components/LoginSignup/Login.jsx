@@ -31,7 +31,7 @@ const Login = ({ swap, status }) => {
           >
             <img
               className={styles.btn_image}
-              src="http://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png"
+              src="https://image.similarpng.com/thumbnail/2020/12/Colorful-google-logo-design-on-transparent-PNG-1.png"
               alt="img"
             />
             <p className={styles.btn_p}>Sign in with Google</p>
@@ -62,7 +62,7 @@ const Login = ({ swap, status }) => {
       <button className={styles.btn} disabled>
         <img
           className={styles.btn_image}
-          src="https://www.freeiconspng.com/thumbs/twitter-icon/twitter-icon-download-18.png"
+          src="https://img.pngio.com/twitter-png-twitter-logo-twitter-icon-twitter-transparent-twitter-logo-transparent-260_260.jpg"
           alt="img"
         />
         <p className={styles.btn_p}>Sign in with Twitter</p>
