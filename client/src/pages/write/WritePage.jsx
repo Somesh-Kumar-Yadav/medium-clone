@@ -3,17 +3,17 @@ import styles from "./Write.module.css";
 import { NavBar } from "../../components/LandingPage/NavBar";
 import { Acordian } from "../../components/acordian/Acordian";
 import { useHistory } from "react-router";
+import { HomePageNavBar } from "../../components/HomePage/HomePageNavBar";
+import { useSelector } from 'react-redux';
 
 const WritePage = () => {
 const history = useHistory()
-  const [active, setActive] = useState("");
-
+const [active, setActive] = useState("");
+const auth = Boolean(useSelector(state => state.auth.isAuth))
   return (
     <div className={styles.write}>
       {/* navbar */}
-
-      <NavBar color="#F24D2E" />
-
+ {auth ? <HomePageNavBar color={"#F24D2E" }/>:<NavBar color="#F24D2E" /> }
       {/* section 1 */}
       <div className={styles.sec1}>
         <div className={styles.left}>

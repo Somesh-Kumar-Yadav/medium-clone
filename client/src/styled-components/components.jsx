@@ -21,7 +21,7 @@ align-items: center;
 width:100vw;
 overflow: hidden;
 position: relative;
-background:${props => (props.color) ? props.color : "white"}; 
+background:${props => (props.color) ? props.color : "white"};
 `
 export const HomeNav = styled.div`
 height: 75px;

@@ -1,11 +1,15 @@
 import React from "react";
 import styles from "./Membership.module.css";
 import { NavBar } from "../LandingPage/NavBar";
+import { useSelector } from 'react-redux';
+import { HomePageNavBar } from "../HomePage/HomePageNavBar";
+
 
 const Membership = () => {
+  const auth = Boolean(useSelector(state => state.auth.isAuth))
   return (
     <div>
-      <NavBar color={"#4479FF"} />
+      {auth ? <HomePageNavBar color={"#4479FF" }/>:<NavBar color={"#4479FF"} />}
       <div className={styles.maindiv}>
         <p className={styles.heading}>Fuel great thinking.</p>
         <p className={styles.para}>
