@@ -3,6 +3,8 @@ import { HomeNav } from "../../styled-components/components";
 import styles from "../../styles/NavBar.module.css";
 import Profile from "../Profile/Profile";
 import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserData } from "../../redux/user/actions";
 
 
 export const HomePageNavBar = ({color}) => {
@@ -11,6 +13,11 @@ export const HomePageNavBar = ({color}) => {
   const handleSearchBox = () => {
     setSearchBox(!searchBox);
   };
+  const user = useSelector(state=>state.auth.user.user)
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(getUserData(String(user._id)));
+  },[dispatch,user._id])
   return (
     <React.Fragment>
       <HomeNav color={color}>

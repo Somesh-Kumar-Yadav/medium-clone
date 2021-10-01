@@ -1,21 +1,23 @@
 import React from "react";
 import styles from "../../styles/HomePage.module.css";
 
-export const Follow = () => {
+export const Follow = ({ people }) => {
+  
   return (
     <div className={styles.follow_person}>
       <span className={styles.follow_person_img}>
         <img
-          src="https://miro.medium.com/fit/c/48/48/1*AwBz4NW9_M45J-sBlmH-lA.png"
+          src={people.imageUrl}
           alt=""
+          onError={(e)=>{e.target.onerror = null; e.target.src="https://cvbay.com/wp-content/uploads/2017/03/dummy-image.jpg"}}
         />
       </span>
       <span className={styles.follow_person_cont}>
         <span className={styles.follow_person_cont_1}>
           <span>
-            <strong>Barack Obama</strong>
+            <strong>{people.name}</strong>
           </span>
-          <span>Dad, husband, President, Citizen</span>
+          <span>Author at Medium, Blogger</span>
         </span>
         <span className={styles.follow_person_cont_2}>Follow</span>
       </span>

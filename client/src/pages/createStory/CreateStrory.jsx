@@ -13,8 +13,18 @@ const CreateStrory = () => {
   const [open, setOpen] = useState(true);
   const user = useSelector((state) => state.auth.user.user);
   const [body, setBody] = useState("");
+  const [file, setFile] = useState();
+
+  console.log(file);
+  console.log(body);
   const handleChnge = (value) => {
     setBody(value);
+  };
+  const formData = new FormData();
+
+  const submitData = () => {
+    formData.append(file);
+    console.log(formData);
   };
   if (!user) {
     return <LoginSignup status={open} set={setOpen} />;
@@ -37,7 +47,9 @@ const CreateStrory = () => {
             </p>
           </div>
           <div className="right">
-            <div className="publish">Publish</div>
+            <div className="publish" onClick={submitData}>
+              Publish
+            </div>
             <div className="icons">
               <BiDotsHorizontalRounded />
               <IoNotificationsOutline />
@@ -46,6 +58,28 @@ const CreateStrory = () => {
           </div>
         </div>
         <div className="editor">
+          <div className="mainDiv1">
+            <input type="text" name="title" placeholder="Write Title..." />
+            <input
+              type="text"
+              name="description"
+              placeholder="Write Description..."
+            />
+            <div className="mainDiv2">
+              <input
+                type="text"
+                onChange={handleChnge}
+                name="topic"
+                placeholder="Write Topic..."
+              />
+              <input
+                type="file"
+                name="file"
+                onChange={(event) => setFile(event.target.files[0])}
+                placeholder="Choose Image"
+              />
+            </div>
+          </div>
           <ReactQuill
             placeholder="Your Story..."
             onChange={handleChnge}

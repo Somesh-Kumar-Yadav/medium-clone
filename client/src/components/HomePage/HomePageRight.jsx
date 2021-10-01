@@ -2,15 +2,19 @@ import React from "react"
 import { HomePageTopics } from "./HomePageTopics"
 import styles from "../../styles/HomePage.module.css"
 import { Follow } from "./Follow"
+import { useSelector } from "react-redux";
 
 export const HomePageRight = () => {
+    const topics = useSelector(state => state.user.topics)
+    const people = useSelector(state => state.user.people)
+    
     return <div className={styles.home_page_right}>
         <div className={styles.home_page_right_top}>
             <span className={styles.home_page_right_top_heading}>Recommended topics</span>
             <span className={styles.home_page_right_top_body}>
                 {
-                Array(9).fill(0).map(item => {
-                    return <HomePageTopics/>
+                topics.map((item) => {
+                    return <HomePageTopics key={item._id} topic={item}/>
                 })
             }
             </span>
@@ -19,8 +23,8 @@ export const HomePageRight = () => {
             <span className={styles.home_page_right_top_heading}>Who To Follow</span>
             <span className={styles.home_page_right_top_body}>
                 {
-                Array(3).fill(0).map(item => {
-                    return <Follow/>
+                people.map(item => {
+                    return <Follow key={item._id} people={ item}/>
                 })
             }
             </span>

@@ -155,3 +155,10 @@
 	margin: 7px 10px 10px 0;
 	cursor: pointer;
 }
+.loading_logo {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

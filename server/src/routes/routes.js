@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/user.model");
 const Blog = require("../models/blog.model");
+const Topic = require("../models/topics.model");
 const router = express.Router();
 
 router.post("/:id/follow/:followingid", async (req, res) => {
@@ -79,7 +80,7 @@ router.post("/:blogid/comment", async (req, res) => {
 router.get("/trending", async (req, res) => {
 	let trending;
 	try {
-		trending = await await Blog.find()
+		trending = await Blog.find()
 			.sort({ claps: -1 })
 			.populate("author")
 			.populate("topic")
@@ -94,4 +95,81 @@ router.get("/trending", async (req, res) => {
 			.send({ status: "failed", message: "Something went wrong" });
 	}
 });
+router.get("/:id/topics", async (req, res) => {
+	try {
+		const user = await User.findById(req.params.id).lean().exec();
+		const topics = user.followingTopics;
+		res.status(200).send({ topics });
+	} catch (e) {
+		return res
+			.status(400)
+			.send({ status: "failed", message: "Something went wrong" });
+	}
+});
+router.get("/:id/nottopics", async (req, res) => {
+	try {
+		const user = await User.findById(req.params.id).lean().exec();
+		const allTopics = await Topic.find().lean().exec();
+		const topics = user.followingTopics;
+		const topic = allTopics.filter((item) => {
+			return !topics.includes(item.title);
+		});
+		const data = topic.slice(0, 9);
+		res.status(200).send({ data });
+	} catch (e) {
+		return res
+			.status(400)
+			.send({ status: "failed", message: "Something went wrong" });
+	}
+});
+router.get("/:id/notfollow", async (req, res) => {
+	try {
+		const user = await User.findById(req.params.id).lean().exec();
+		const allUser = await User.find().lean().exec();
+		const peoples = user.following;
+		let ids = peoples.map((item) => {
+			return item.name;
+		});
+		ids = [...ids, user.name];
+		const people = allUser.filter((item) => {
+			console.log(item.name);
+			return !ids.includes(item.name);
+		});
+		const data = people.slice(0, 3);
+		res.status(200).send({ data });
+	} catch (e) {
+		return res
+			.status(400)
+			.send({ status: "failed", message: "Something went wrong" });
+	}
+});
+
+router.get("/:id/followingblogs", async (req, res) => {
+	try {
+		const user = await User.findById(req.params.id)
+			.populate("followers")
+			.populate("followingTopics")
+			.populate("following")
+			.lean()
+			.exec();
+		const allBlogs = await Blog.find()
+			.populate("author")
+			.populate("topic")
+			.populate("comments.author")
+			.lean()
+			.exec();
+		const following = user.following.map((item) => {
+			return item.name;
+		});
+		const data = allBlogs.filter((item) => {
+			return following.includes(item.author.name);
+		});
+		res.status(200).send({ data });
+	} catch (e) {
+		return res
+			.status(400)
+			.send({ status: "failed", message: "Something went wrong" });
+	}
+});
+
 module.exports = router;
