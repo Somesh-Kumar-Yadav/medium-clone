@@ -1,18 +1,20 @@
 import React from "react";
 import styles from "../../styles/LoginSignup.module.css";
 import GoogleLogin from "react-google-login";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/auth/actions";
+import { useHistory } from "react-router";
 
 const Signup = ({ swap, status }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const responseGoogle = (res) => {
-    // console.log(res);
-    let data = { ...res.profileObj, events: {} };
-    // console.log(data);
-    localStorage.setItem("login", JSON.stringify(data));
+    const data = { ...res.profileObj, events: {} };
+    dispatch(loginUser(data));
     setTimeout(() => {
-      let data = JSON.parse(localStorage.getItem("login"));
       if (data) {
         alert("You have successfully Logged In");
-        document.location.href = "http://localhost:3000";
+        history.push(history.location.pathname)
       }
     }, 1000);
   };

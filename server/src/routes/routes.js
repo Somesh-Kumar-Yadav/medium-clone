@@ -76,5 +76,22 @@ router.post("/:blogid/comment", async (req, res) => {
 			.send({ status: "failed", message: "Something went wrong" });
 	}
 });
-
+router.get("/trending", async (req, res) => {
+	let trending;
+	try {
+		trending = await await Blog.find()
+			.sort({ claps: -1 })
+			.populate("author")
+			.populate("topic")
+			.populate("comments.author")
+			.limit(6)
+			.lean()
+			.exec();
+		res.status(200).send({ trending });
+	} catch (e) {
+		return res
+			.status(400)
+			.send({ status: "failed", message: "Something went wrong" });
+	}
+});
 module.exports = router;

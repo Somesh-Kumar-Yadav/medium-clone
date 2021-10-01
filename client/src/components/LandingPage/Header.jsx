@@ -1,8 +1,9 @@
 import React from "react";
 import { Head } from "../../styled-components/components";
 import styles from "../../styles/LandingPage.module.css"
-
+import { useHistory } from "react-router";
 export const Header = () => {
+    const history = useHistory()
     return <React.Fragment>
         <Head color="#C4E2FF">
             <div className={styles.header_block}>
@@ -13,7 +14,7 @@ export const Header = () => {
                     <h4>
                         It's easy and free to post your thinking on any topic and connect with millions of readers.
                     </h4>
-                    <span>
+                    <span onClick={()=>{history.push("/newStory")}}>
                         Start Writing
                     </span>
                 </div>

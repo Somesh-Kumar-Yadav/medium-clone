@@ -1,18 +1,20 @@
 import React from "react";
 import styles from "../../styles/LoginSignup.module.css";
 import GoogleLogin from "react-google-login";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/auth/actions";
+import { useHistory } from "react-router";
 
-const Login = ({ swap, status }) => {
+const Login = ({ swap, status, set }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const responseGoogle = (res) => {
-    // console.log(res);
-    let data = { ...res.profileObj, events: {} };
-    // console.log(data);
-    localStorage.setItem("login", JSON.stringify(data));
+    const data = { ...res.profileObj, events: {} };
+    dispatch(loginUser(data));
     setTimeout(() => {
-      let data = JSON.parse(localStorage.getItem("login"));
       if (data) {
         alert("You have successfully Logged In");
-        document.location.href = "http://localhost:3000";
+        history.push(history.location.pathname);
       }
     }, 1000);
   };
@@ -28,14 +30,16 @@ const Login = ({ swap, status }) => {
             disabled={renderProps.disabled}
           >
             <img
+              onClick={() => set(false)}
               className={styles.btn_image}
-              src="http://assets.stickpng.com/images/5847f9cbcef1014c0b5e48c8.png"
+              src="https://image.similarpng.com/thumbnail/2020/12/Colorful-google-logo-design-on-transparent-PNG-1.png"
               alt="img"
             />
-            <p className={styles.btn_p}>Sign in with Google</p>
+            <p onClick={() => set(false)} className={styles.btn_p}>
+              Sign in with Google
+            </p>
           </button>
         )}
-        buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         // isSignedIn={true}
@@ -60,7 +64,7 @@ const Login = ({ swap, status }) => {
       <button className={styles.btn} disabled>
         <img
           className={styles.btn_image}
-          src="https://www.freeiconspng.com/thumbs/twitter-icon/twitter-icon-download-18.png"
+          src="https://img.pngio.com/twitter-png-twitter-logo-twitter-icon-twitter-transparent-twitter-logo-transparent-260_260.jpg"
           alt="img"
         />
         <p className={styles.btn_p}>Sign in with Twitter</p>

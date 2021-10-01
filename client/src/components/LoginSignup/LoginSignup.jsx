@@ -13,9 +13,9 @@ const LoginSignup = ({ status, set }) => {
       <Modal open={status} onClose={() => set(false)}>
         <div className={styles.modal}>
           {swapLogin ? (
-            <Login swap={setswapLogin} status={swapLogin} />
+            <Login swap={setswapLogin} set={set} status={swapLogin} />
           ) : (
-            <Signup swap={setswapLogin} status={swapLogin} />
+            <Signup swap={setswapLogin} set={set} status={swapLogin} />
           )}
           <p className={styles.modal_p}>
             Click “Sign In” to agree to Medium’s{" "}

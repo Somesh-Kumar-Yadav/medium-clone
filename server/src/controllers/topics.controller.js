@@ -23,8 +23,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
 	let topics;
 	try {
-		topics = await Topic.find().lean().exec();
-
+		topics = await Topic.find().limit(9).lean().exec();
 		return res.status(200).json({ topics });
 	} catch (e) {
 		return res

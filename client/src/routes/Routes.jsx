@@ -4,17 +4,26 @@ import { LandingPage } from "../components/LandingPage/LandingPage";
 import { WritePage } from "../pages/write/WritePage";
 import { HomePage } from "../components/HomePage/HomePage";
 import { OurStroryPage } from "../components/OurStoryPage/OurStoryPage";
+import { CreateStrory } from "../pages/createStory/CreateStrory";
 import Membership from "../components/Membership/Membership";
+<<<<<<< HEAD
 import { BlogPost } from "../components/BlogPage/BlogPage";
+=======
+import { useDispatch, useSelector } from "react-redux";
+import { getBlogs } from "../redux/auth/actions";
+>>>>>>> 81bb69d6d486f4ba3e94e04a3392aa7a77f94b1e
 
 export default function Routes() {
-  let data = localStorage.getItem("login");
-  //console.log("data", data);
+  const auth = Boolean(useSelector((state) => state.auth.isAuth));
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(getBlogs())
+  }, [dispatch]);
   return (
     <>
       <Switch>
         <Route exact path="/">
-          {data ? <HomePage data={data} /> : <LandingPage />}
+          {auth ? <HomePage /> : <LandingPage />}
         </Route>
         <Route path="/creator">
           <WritePage />
@@ -22,6 +31,9 @@ export default function Routes() {
         <Route path="/story">
           <OurStroryPage />
         </Route>
+        <Route path="/newStory">
+          <CreateStrory/>
+          </Route>
         <Route path="/membership">
           <Membership />
         </Route>

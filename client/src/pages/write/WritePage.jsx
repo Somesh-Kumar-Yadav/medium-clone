@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import styles from "./Write.module.css";
 import { NavBar } from "../../components/LandingPage/NavBar";
 import { Acordian } from "../../components/acordian/Acordian";
+import { useHistory } from "react-router";
+import { HomePageNavBar } from "../../components/HomePage/HomePageNavBar";
+import { useSelector } from 'react-redux';
 
 const WritePage = () => {
-
-  const [active, setActive] = useState("");
-
+  const history = useHistory();
+const [active, setActive] = useState("");
+const auth = Boolean(useSelector(state => state.auth.isAuth))
   return (
     <div className={styles.write}>
       {/* navbar */}
-
-      <NavBar color="#F24D2E" />
-
+ {auth ? <HomePageNavBar color={"#F24D2E" }/>:<NavBar color="#F24D2E" /> }
       {/* section 1 */}
       <div className={styles.sec1}>
         <div className={styles.left}>
@@ -25,7 +26,7 @@ const WritePage = () => {
             offer — welcome home. Sign up for free so your writing can thrive in
             a network supported by millions of readers — not ads.
           </p>
-          <div className={styles.btn}>Start Writing</div>
+          <div className={styles.btn} onClick={()=>{history.push("/newStory")}}>Start Writing</div>
         </div>
         <div className={styles.right}>
           <img

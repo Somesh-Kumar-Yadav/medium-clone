@@ -136,6 +136,7 @@
 }
 .blog_card_1 > img {
 	height: 155px;
+	width: 230px;
 }
 .blog_card_2 {
 	display: flex;
@@ -242,4 +243,5 @@
 }
 .footer_landing > p {
 	margin: 7px 10px 10px 0;
+	cursor: pointer;
 }
