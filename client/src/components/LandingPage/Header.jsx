@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Head } from "../../styled-components/components";
 import styles from "../../styles/LandingPage.module.css"
 
@@ -14,7 +15,7 @@ export const Header = () => {
                         It's easy and free to post your thinking on any topic and connect with millions of readers.
                     </h4>
                     <span>
-                        Start Writing
+                       <Link to="newStory"> Start Writing </Link>
                     </span>
                 </div>
             </div>

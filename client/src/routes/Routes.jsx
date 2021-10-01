@@ -4,6 +4,7 @@ import { LandingPage } from "../components/LandingPage/LandingPage";
 import { WritePage } from "../pages/write/WritePage";
 import { HomePage } from "../components/HomePage/HomePage";
 import { OurStroryPage } from "../components/OurStoryPage/OurStoryPage";
+import { CreateStrory } from "../pages/createStory/CreateStrory";
 import Membership from "../components/Membership/Membership";
 import { useSelector } from "react-redux";
 
@@ -22,6 +23,9 @@ export default function Routes() {
         <Route path="/story">
           <OurStroryPage />
         </Route>
+        <Route path="/newStory">
+          <CreateStrory/>
+          </Route>
         <Route path="/membership">
           <Membership />
         </Route>
