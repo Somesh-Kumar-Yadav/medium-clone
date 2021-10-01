@@ -25,8 +25,30 @@ const Profile = () => {
             <h5>{user.name}</h5>
           </div>
           <hr className="line" />
-          <p className="links" onClick={()=>{history.push("/story")}}>Stories</p>
-          <p className="links" onClick={()=>{history.push("/newStory")}}>Write a Story</p>
+          <p
+            className="links"
+            onClick={() => {
+              history.push("/story");
+            }}
+          >
+            Stories
+          </p>
+          <p
+            className="links"
+            onClick={() => {
+              history.push("/newStory");
+            }}
+          >
+            Write a Story
+          </p>
+          <p
+            className="links"
+            onClick={() => {
+              history.push("/membership");
+            }}
+          >
+            Membership
+          </p>
           <div>
             <GoogleLogout
               clientId="378817930652-26drd8dhlmr4qet0ilu2qts92m12mpdr.apps.googleusercontent.com"
