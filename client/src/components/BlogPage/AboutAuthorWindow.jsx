@@ -1,4 +1,7 @@
 import styled from "styled-components";
+{
+  /* <FontAwesomeIcon icon="fa-solid fa-hands-clapping" />; */
+}
 
 const Wrapper = styled.div`
   position: fixed;
