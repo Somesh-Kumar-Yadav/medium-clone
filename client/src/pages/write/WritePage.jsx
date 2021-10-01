@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import styles from "./Write.module.css";
 import { NavBar } from "../../components/LandingPage/NavBar";
 import { Acordian } from "../../components/acordian/Acordian";
+import { useHistory } from "react-router";
 
 const WritePage = () => {
-
+const history = useHistory()
   const [active, setActive] = useState("");
 
   return (
@@ -25,7 +26,7 @@ const WritePage = () => {
             offer — welcome home. Sign up for free so your writing can thrive in
             a network supported by millions of readers — not ads.
           </p>
-          <div className={styles.btn}>Start Writing</div>
+          <div className={styles.btn} onClick={()=>{history.push("/newStory")}}>Start Writing</div>
         </div>
         <div className={styles.right}>
           <img

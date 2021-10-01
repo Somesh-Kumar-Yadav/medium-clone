@@ -4,11 +4,8 @@ import styles from "../../styles/NavBar.module.css";
 import Profile from "../Profile/Profile";
 
 
-export const HomePageNavBar = ({ data }) => {
+export const HomePageNavBar = () => {
   
-
-  data = JSON.parse(data);
-  // console.log("data on navbar homepage", data);
   const [searchBox, setSearchBox] = React.useState(false);
   const handleSearchBox = () => {
     setSearchBox(!searchBox);
@@ -54,7 +51,7 @@ export const HomePageNavBar = ({ data }) => {
           </span>
           <span className={styles.nav_tabs_started_2}>Upgrade</span>
           <span>
-            <Profile data={data} />
+            <Profile />
           </span>
         </div>
       </HomeNav>

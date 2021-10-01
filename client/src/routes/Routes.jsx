@@ -9,13 +9,12 @@ import Membership from "../components/Membership/Membership";
 import { useSelector } from "react-redux";
 
 export default function Routes() {
-  let data = localStorage.getItem("login");
   const auth = Boolean(useSelector((state) => state.auth.isAuth));
   return (
     <>
       <Switch>
         <Route exact path="/">
-          {auth ? <HomePage data={data} /> : <LandingPage />}
+          {auth ? <HomePage /> : <LandingPage />}
         </Route>
         <Route path="/creator">
           <WritePage />
