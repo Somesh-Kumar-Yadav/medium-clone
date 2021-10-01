@@ -8,13 +8,19 @@ import { CreateStrory } from "../pages/createStory/CreateStrory";
 import Membership from "../components/Membership/Membership";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlogs } from "../redux/auth/actions";
+import { Loading } from "../components/HomePage/Loading";
 
 export default function Routes() {
   const auth = Boolean(useSelector((state) => state.auth.isAuth));
+  const load = Boolean(useSelector((state) => state.auth.isLoading));
+  console.log(load);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getBlogs())
   }, [dispatch]);
+  if (load) {
+    return <Loading />
+  }
   return (
     <>
       <Switch>
