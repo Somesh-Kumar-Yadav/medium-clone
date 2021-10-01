@@ -7,7 +7,6 @@ import { loginUser } from "../../redux/auth/actions";
 const Login = ({ swap, status }) => {
   const dispatch = useDispatch();
   const responseGoogle = (res) => {
-    console.log(res);
     const data = { ...res.profileObj, events: {} };
     dispatch(loginUser(data));
     setTimeout(() => {
