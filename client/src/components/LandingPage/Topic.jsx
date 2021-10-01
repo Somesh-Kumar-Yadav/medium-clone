@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../../styles/LandingPage.module.css"
 
-export const Topic = () => {
+export const Topic = ({topic}) => {
     return <div className={styles.topic_right}>
-        Topic
+        {topic.title}
     </div>
 }

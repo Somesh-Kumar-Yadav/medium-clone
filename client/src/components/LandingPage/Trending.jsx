@@ -1,8 +1,10 @@
 import React from "react";
 import { TrendingCard } from "./TrendingCard";
 import styles from "../../styles/LandingPage.module.css"
+import { useSelector } from "react-redux";
 
 export const Trending = () => {
+    const trending = useSelector(state => state.auth.trending)
     return <div className={styles.trending_div}>
             <span className={styles.trending_div_title}>
                 <svg width="28" height="29" viewBox="0 0 28 29" fill="none">
@@ -21,8 +23,8 @@ export const Trending = () => {
                 <h5>Trending on Medium</h5>
             </span>
             <span className={styles.trending_div_body}>
-                {Array(6).fill(0).map((item,i) => {
-                    return <TrendingCard key={i} num={"0"+(i+1)}/>
+                {trending.map((item,i) => {
+                    return <TrendingCard key={item._id} blog={item} num={"0"+(i+1)}/>
                 })}
             </span>
         </div>

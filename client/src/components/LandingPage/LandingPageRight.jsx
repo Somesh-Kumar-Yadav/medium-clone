@@ -1,15 +1,17 @@
 import React from "react";
 import styles from "../../styles/LandingPage.module.css"
 import { Topic } from "./Topic";
+import { useSelector } from "react-redux";
 
 export const LandingPageBottomRight = () => {
+    const topics = useSelector(state => state.auth.topics);
     return <div className={styles.landingPageBottom_div_right}>
         <h5>
             DISCOVER MORE OF WHAT MATTERS TO YOU
         </h5>
         <div className={styles.landingPageBottom_div_right_bottom}>
-            {Array(9).fill(0).map((item,i) => {
-                return <Topic key={i}/>
+            {topics.map((item) => {
+                return <Topic key={item._id} topic={item}/>
             })}
         </div>
         <div className={styles.footer_landing}>

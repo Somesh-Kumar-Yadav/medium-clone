@@ -3,9 +3,11 @@ import styles from "../../styles/HomePage.module.css"
 import { HomePageTopics } from "./HomePageTopics"
 import {BlogCard} from "../LandingPage/BlogCard"
 import {Tabs} from "../../styled-components/components"
+import { useSelector } from "react-redux"
 
 export const HomePageLeft = () => {
     const [tabs, setTabs] = React.useState(true);
+    const blogs = useSelector(state => state.auth.blogs);
     return <div className={styles.home_page_left}>
         <div className={styles.home_page_left_top}>
             <span className={styles.home_topics_heading}>Your Topics</span>
@@ -21,8 +23,8 @@ export const HomePageLeft = () => {
         </div>
         <div className={styles.home_page_left_bottom}>
             {
-                Array(10).fill(0).map(item => {
-                    return <BlogCard/>
+                blogs.map((item) => {
+                    return <BlogCard key={item._id} blog={ item}/>
                 })
             }
         </div>

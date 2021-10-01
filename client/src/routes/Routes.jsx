@@ -6,10 +6,15 @@ import { HomePage } from "../components/HomePage/HomePage";
 import { OurStroryPage } from "../components/OurStoryPage/OurStoryPage";
 import { CreateStrory } from "../pages/createStory/CreateStrory";
 import Membership from "../components/Membership/Membership";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getBlogs } from "../redux/auth/actions";
 
 export default function Routes() {
   const auth = Boolean(useSelector((state) => state.auth.isAuth));
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(getBlogs())
+  }, [dispatch]);
   return (
     <>
       <Switch>

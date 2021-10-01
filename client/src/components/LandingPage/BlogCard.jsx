@@ -1,27 +1,31 @@
 import React from "react";
 import styles from "../../styles/LandingPage.module.css";
+import { convertDates } from "../../utils/convertDates";
+import { convertMin } from "../../utils/convertMin";
 
-export const BlogCard = () => {
+export const BlogCard = ({ blog }) => {
+  const date = convertDates(blog.createdAt);
+  const time = convertMin(blog.text);
   return (
     <div className={styles.blog_card}>
       <div className={styles.blog_card_2}>
         <span className={styles.blog_card_2_1}>
           <img
-            src="https://miro.medium.com/fit/c/20/20/1*isyyZjEsBA-_thOn2ksrmQ.png"
+            src={blog.author.imageUrl}
             alt=""
           ></img>
-          <h6>Here comes the author of blog</h6>
+          <h6>{blog.author.name}</h6>
         </span>
         <span className={styles.blog_card_2_2}>
-          <h4>A Car Park attendant who fooled everybody for over 20-years.</h4>
+          <h4>{blog.title}</h4>
         </span>
         <span className={styles.blog_card_2_4}>
-          <p>Unbelievable but true.</p>
+          <p>{blog.description}</p>
         </span>
         <span className={styles.blog_card_2_3}>
           <span>
-            <p>Sep 18 · 4 min read · </p>
-            <span>Humor</span>
+            <p>{date} · {time} min read · </p>
+            <span>{blog.topic.title}</span>
             <svg
               width="15"
               height="15"
@@ -43,7 +47,7 @@ export const BlogCard = () => {
       </div>
       <div className={styles.blog_card_1}>
         <img
-          src="https://miro.medium.com/fit/c/200/134/1*22W6CHXOJlTMYaOkQXHb9w.png"
+          src={blog.featureImg}
           alt=""
         ></img>
       </div>

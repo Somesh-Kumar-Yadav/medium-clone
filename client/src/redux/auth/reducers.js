@@ -2,6 +2,8 @@ import {
 	GET_DATA_FAILURE,
 	GET_DATA_REQUEST,
 	GET_DATA_SUCCESS,
+	GET_TOPIC_SUCCESS,
+	GET_TRENDING_SUCCESS,
 	LOGIN_FAILURE,
 	LOGIN_REQUEST,
 	LOGIN_SUCCESS,
@@ -12,7 +14,9 @@ const user = loadData("user");
 const initState = {
 	isAuth: isAuth === "true" ? true : false,
 	user: user ? user : {},
-	users: [],
+	blogs: [],
+	topics: [],
+	trending: [],
 	isError: false,
 	isLoading: false,
 };
@@ -50,11 +54,20 @@ export const authReducer = (state = initState, { type, payload }) => {
 				isLoading: true,
 				isError: false,
 			};
-
 		case GET_DATA_SUCCESS:
 			return {
 				...state,
-				users: [...payload],
+				blogs: [...payload],
+			};
+		case GET_TRENDING_SUCCESS:
+			return {
+				...state,
+				trending: [...payload],
+			};
+		case GET_TOPIC_SUCCESS:
+			return {
+				...state,
+				topics: [...payload],
 				isLoading: false,
 			};
 		case GET_DATA_FAILURE:
