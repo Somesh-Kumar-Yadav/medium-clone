@@ -5,16 +5,20 @@ import { BiDotsHorizontalRounded } from 'react-icons/bi';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import LoginSignup from '../../components/LoginSignup/LoginSignup';
 
 const CreateStrory = () => {
+    const [open, setOpen] = useState(true);
+    const user = useSelector(state => state.auth.user.user);
 
     const [body, setBody] = useState("")
-
     const handleChnge = (value) => {
-        setBody(value)
-        
+        setBody(value)   
     }
-
+    if (!user) {
+        return <LoginSignup status={open} set={setOpen} />
+    }
     
     return (
         <div className="story">
