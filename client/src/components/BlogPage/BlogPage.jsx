@@ -1,4 +1,5 @@
 import { AboutAuthorWindow } from "./AboutAuthorWindow";
+import { BlogBody } from "./BlogBody";
 import { FollowNav } from "./FollowNav";
 
 export const BlogPost = () => {
@@ -6,6 +7,7 @@ export const BlogPost = () => {
     <div>
       <FollowNav />
       <AboutAuthorWindow />
+      <BlogBody />
     </div>
   );
 };
