@@ -7,7 +7,7 @@ import { HomePageNavBar } from "../../components/HomePage/HomePageNavBar";
 import { useSelector } from 'react-redux';
 
 const WritePage = () => {
-const history = useHistory()
+  const history = useHistory();
 const [active, setActive] = useState("");
 const auth = Boolean(useSelector(state => state.auth.isAuth))
   return (
