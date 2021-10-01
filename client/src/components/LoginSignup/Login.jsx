@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/auth/actions";
 import { useHistory } from "react-router";
 
-const Login = ({ swap, status }) => {
+const Login = ({ swap, status, set }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const responseGoogle = (res) => {
@@ -30,14 +30,16 @@ const Login = ({ swap, status }) => {
             disabled={renderProps.disabled}
           >
             <img
+              onClick={() => set(false)}
               className={styles.btn_image}
               src="https://image.similarpng.com/thumbnail/2020/12/Colorful-google-logo-design-on-transparent-PNG-1.png"
               alt="img"
             />
-            <p className={styles.btn_p}>Sign in with Google</p>
+            <p onClick={() => set(false)} className={styles.btn_p}>
+              Sign in with Google
+            </p>
           </button>
         )}
-        buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         // isSignedIn={true}
