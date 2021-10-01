@@ -5,8 +5,6 @@ import LoginSignup from "../LoginSignup/LoginSignup";
 import { useHistory } from "react-router-dom";
 
 export const NavBar = ({ color }) => {
-  const loginUser = localStorage.getItem("login");
-  console.warn("loginUser", loginUser);
   const [open, setOpen] = useState(false);
   const history = useHistory();
   return (
@@ -30,8 +28,6 @@ export const NavBar = ({ color }) => {
           >
             Get Started
           </span>
-          {/* <span>Sign In</span>
-                <span className={styles.nav_tabs_started}>Get Started</span> */}
         </div>
       </Nav>
     </React.Fragment>

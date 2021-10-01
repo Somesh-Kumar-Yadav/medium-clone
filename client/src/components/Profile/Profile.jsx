@@ -1,26 +1,30 @@
 import React from "react";
 import "./styles.css";
 import { GoogleLogout } from "react-google-login";
-import GoogleButton from "react-google-button";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../../redux/auth/actions";
 
-const Profile = ({ data }) => {
+const Profile = () => {
+  const user = useSelector((state) => state.auth.user.user);
+  const dispatch = useDispatch();
   const logoutres = () => {
     alert("You have successfully Logged Out");
-    localStorage.removeItem("login");
+    dispatch(logoutUser());
     document.location.href = "http://localhost:3000";
   };
   return (
     <div>
       <div className="dropdown" style={{ float: "right" }}>
-        <img className="profileimage" src={data.imageUrl} alt="" />
+        <img className="profileimage" src={user.imageUrl} alt="" />
         <div className="dropdown_content">
           <div className="profileHeader">
-            <img className="profilePic" src={data.imageUrl} alt="" />
-            <h5>{data.name}</h5>
+            <img className="profilePic" src={user.imageUrl} alt="" />
+            <h5>{user.name}</h5>
           </div>
           <hr className="line" />
-          <a href="#">Stories</a>
-          <a href="#">Write a Story</a>
+          <p>Stories</p>
+          <p>Write a Story</p>
           <div>
             <GoogleLogout
               clientId="378817930652-26drd8dhlmr4qet0ilu2qts92m12mpdr.apps.googleusercontent.com"

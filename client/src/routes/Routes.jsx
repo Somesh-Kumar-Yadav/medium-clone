@@ -5,15 +5,16 @@ import { WritePage } from "../pages/write/WritePage";
 import { HomePage } from "../components/HomePage/HomePage";
 import { OurStroryPage } from "../components/OurStoryPage/OurStoryPage";
 import Membership from "../components/Membership/Membership";
+import { useSelector } from "react-redux";
 
 export default function Routes() {
   let data = localStorage.getItem("login");
-  //console.log("data", data);
+  const auth = Boolean(useSelector((state) => state.auth.isAuth));
   return (
     <>
       <Switch>
         <Route exact path="/">
-          {data ? <HomePage data={data} /> : <LandingPage />}
+          {auth ? <HomePage data={data} /> : <LandingPage />}
         </Route>
         <Route path="/creator">
           <WritePage />

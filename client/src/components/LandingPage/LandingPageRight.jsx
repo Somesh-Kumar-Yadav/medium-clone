@@ -8,8 +8,8 @@ export const LandingPageBottomRight = () => {
             DISCOVER MORE OF WHAT MATTERS TO YOU
         </h5>
         <div className={styles.landingPageBottom_div_right_bottom}>
-            {Array(9).fill(0).map(item => {
-                return <Topic/>
+            {Array(9).fill(0).map((item,i) => {
+                return <Topic key={i}/>
             })}
         </div>
         <div className={styles.footer_landing}>

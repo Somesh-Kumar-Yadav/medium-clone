@@ -4,8 +4,8 @@ import { BlogCard } from "./BlogCard";
 
 export const LandingPageBottomLeft = () => {
     return <div className={styles.landingPageBottom_div_left}>
-        {Array(10).fill(0).map(item => {
-            return <BlogCard/>
+        {Array(10).fill(0).map((item,i) => {
+            return <BlogCard key={i}/>
         })}
     </div>
 }
