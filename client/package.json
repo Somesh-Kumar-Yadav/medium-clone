@@ -5,15 +5,13 @@
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "@mui/icons-material": "^5.0.1",
     "axios": "^0.21.1",
     "json-server": "^0.16.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-<<<<<<< HEAD
-=======
     "react-google-button": "^0.7.2",
->>>>>>> bcf6d0ff631303072a124524afc79eaf25b5b514
     "react-google-login": "^5.2.2",
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",

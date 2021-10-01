@@ -5,6 +5,7 @@ import { WritePage } from "../pages/write/WritePage";
 import { HomePage } from "../components/HomePage/HomePage";
 import { OurStroryPage } from "../components/OurStoryPage/OurStoryPage";
 import Membership from "../components/Membership/Membership";
+import { BlogPost } from "../components/BlogPage/BlogPage";
 
 export default function Routes() {
   let data = localStorage.getItem("login");
@@ -23,6 +24,9 @@ export default function Routes() {
         </Route>
         <Route path="/membership">
           <Membership />
+        </Route>
+        <Route path="/blogs">
+          <BlogPost />
         </Route>
       </Switch>
     </>
