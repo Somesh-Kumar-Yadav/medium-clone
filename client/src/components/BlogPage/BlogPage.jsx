@@ -6,13 +6,7 @@ import { FollowNav } from "./FollowNav";
 
 export const BlogPost = () => {
   useEffect(() => {}, []);
-
-  const blogs = useSelector((state) => state.auth.blogs);
-
-  console.log(blogs);
-
-  let data = blogs[0];
-  console.log(blogs);
+  const data = useSelector((state) => state.auth.singleBlog);  
   return (
     <div>
       <FollowNav />

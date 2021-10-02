@@ -3,7 +3,6 @@ import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
 // import CloseIcon from "@mui/icons-material/Close";
-import Paper from "@material-ui/core/Paper";
 import useScrollPosition from "@react-hook/window-scroll";
 
 const Wrapper = styled.div`

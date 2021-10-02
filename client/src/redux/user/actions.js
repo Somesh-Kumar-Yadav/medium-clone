@@ -48,19 +48,15 @@ export const getUserData = (payload) => (dispatch) => {
 		dispatch(getRequest());
 		console.log(payload);
 		axios.get(`http://localhost:2345/${payload}/topics`).then((res) => {
-			console.log("topics", res.data.topics);
 			dispatch(getFollowingTopic(res.data.topics));
 		});
 		axios.get(`http://localhost:2345/${payload}/nottopics`).then((res) => {
-			console.log("nottopics", res.data.data);
 			dispatch(getTopic(res.data.data));
 		});
 		axios.get(`http://localhost:2345/${payload}/notfollow`).then((res) => {
-			console.log("notfollow", res.data.data);
 			dispatch(getPeople(res.data.data));
 		});
 		axios.get(`http://localhost:2345/${payload}/followingblogs`).then((res) => {
-			console.log("blogs", res.data.data);
 			dispatch(getSuccess(res.data.data));
 		});
 	} catch (e) {
