@@ -22,6 +22,7 @@ const Wrapper = styled.div`
   .authorDesc {
     display: grid;
     grid-template-columns:2fr 2fr;
+    align-items:center;
     margin-bottom:30px;
 
     p{
@@ -33,6 +34,18 @@ const Wrapper = styled.div`
     .div1 {
       display:flex;
       justify-content:flex-start;
+      align-items:center;
+      .imgDiv{
+        width:25px;
+        height:25px;
+        border-radius:50%;
+        margin-right:15px;
+        overflow:hidden;
+
+        img{
+          width:100%;
+        }
+      }
       }
 
     .div2{
@@ -73,6 +86,8 @@ export const BlogBody = ({ data }) => {
     var split = updatedAt.split("-");
     var date = +split[2].slice(0, 2);
     var month = +split[1];
+    var imageUrl =
+      "https://upload.wikimedia.org/wikipedia/commons/0/01/LinuxCon_Europe_Linus_Torvalds_03_%28cropped%29.jpg";
 
     date = date < 9 ? "0" + date : date;
   }
@@ -100,6 +115,9 @@ export const BlogBody = ({ data }) => {
           <p className="desc"> {description}</p>
           <div className="authorDesc">
             <div className="div1">
+              <div className="imgDiv">
+                <img src={imageUrl} alt="" />
+              </div>
               <p>{author.name}</p>
               <p>{`${months[month + 1]} ${date}`}</p>
               <p> 4 min read</p>
@@ -113,7 +131,6 @@ export const BlogBody = ({ data }) => {
           </div>
           <img src={featureImg} alt="" />
           <div className="body">
-            {/* <p>{body}</p> */}
             {text &&
               text.split("\n").map((p) => (
                 <>

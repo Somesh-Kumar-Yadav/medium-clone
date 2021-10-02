@@ -12,7 +12,7 @@ export const BlogPost = () => {
   console.log(blogs);
 
   let data = blogs[0];
-  console.log(blogs);
+
   return (
     <div>
       <FollowNav />
