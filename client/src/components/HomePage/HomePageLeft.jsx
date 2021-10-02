@@ -4,19 +4,27 @@ import { HomePageTopics } from "./HomePageTopics";
 import { BlogCard } from "../LandingPage/BlogCard";
 import { Tabs } from "../../styled-components/components";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { allTopicBlogs } from "../../redux/auth/actions";
 
 export const HomePageLeft = () => {
   const [tabs, setTabs] = React.useState(true);
   const followedBlogs = useSelector((state) => state.user.blogs);
   const blogs = useSelector((state) => state.auth.blogs);
-  const topics = useSelector(state => state.user.followingTopics)
-  console.log(topics)
+  const topics = useSelector(state => state.user.followingTopics);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const handleNav = (title) => {
+      dispatch(allTopicBlogs({topic:title}));
+      history.push(`/topic/${title}`);
+  }
   return (
     <div className={styles.home_page_left}>
       <div className={styles.home_page_left_top}>
         <span className={styles.home_topics_heading}>Your Topics</span>
         {topics.map((item, i) => {
-          return <HomePageTopics key={i} topic={item} />;
+          return <div onClick={() => { handleNav(item.title)}}><HomePageTopics key={i} topic={item} /></div>;
         })}
       </div>
       <div className={styles.home_page_left_mid}>

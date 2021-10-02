@@ -4,15 +4,16 @@ import styles from "./TopicPage.module.css";
 import { BlogCard } from "../LandingPage/BlogCard";
 import {  useParams } from "react-router";
 import { NavBar } from "../LandingPage/NavBar";
-
+import { HomePageNavBar } from "../HomePage/HomePageNavBar";
 
 const TopicPage = () => {
   const { topic } = useParams();
+  const auth = Boolean(useSelector(state => state.auth.isAuth))
   const data = useSelector((state) => state.auth.topicBlogs);
   console.log(data)
   return (
     <div>
-      <NavBar />
+       {auth ? <HomePageNavBar/>:<NavBar />}
       <div className={styles.name}>
         <div className={styles.h2}>{topic}</div>
       </div>
