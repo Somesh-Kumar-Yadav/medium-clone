@@ -7,6 +7,9 @@ import {
 	LOGIN_FAILURE,
 	LOGIN_REQUEST,
 	LOGIN_SUCCESS,
+	GET_BLOGS_REQUEST,
+	GET_BLOGS_SUCCESS,
+	GET_BLOGS_FAILURE,
 } from "./actionTypes";
 import { loadData, saveData } from "../../utils/localStorage";
 const isAuth = loadData("isAuth");
@@ -19,6 +22,7 @@ const initState = {
 	trending: [],
 	isError: false,
 	isLoading: false,
+	topicBlogs: [],
 };
 export const authReducer = (state = initState, { type, payload }) => {
 	switch (type) {
@@ -71,6 +75,24 @@ export const authReducer = (state = initState, { type, payload }) => {
 				isLoading: false,
 			};
 		case GET_DATA_FAILURE:
+			return {
+				...state,
+				isError: true,
+				isLoading: false,
+			};
+		case GET_BLOGS_REQUEST:
+			return {
+				...state,
+				isLoading: true,
+				isError: false,
+			};
+		case GET_BLOGS_SUCCESS:
+			return {
+				...state,
+				topicBlogs: [...payload],
+				isLoading: false,
+			};
+		case GET_BLOGS_FAILURE:
 			return {
 				...state,
 				isError: true,

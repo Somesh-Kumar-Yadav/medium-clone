@@ -1,23 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import styles from "./TopicPage.module.css";
 import { BlogCard } from "../LandingPage/BlogCard";
-import { HomePageTopics } from "../HomePage/HomePageTopics";
-import { useLocation } from "react-router";
+import {  useParams } from "react-router";
 import { NavBar } from "../LandingPage/NavBar";
 
-const TopicPage = () => {
-  const location = useLocation();
-  const { name } = location.state;
-  const data = useSelector((state) => state.auth.blogs);
-  const topics = useSelector((state) => state.auth.topics);
 
-  //console.log(name);
+const TopicPage = () => {
+  const { topic } = useParams();
+  const data = useSelector((state) => state.auth.topicBlogs);
+  console.log(data)
   return (
     <div>
       <NavBar />
       <div className={styles.name}>
-        <div className={styles.h2}>{name}</div>
+        <div className={styles.h2}>{topic}</div>
       </div>
       <div className={styles.mainDiv}>
         <div className={styles.home_page_left_bottom}>

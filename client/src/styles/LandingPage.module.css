@@ -137,6 +137,7 @@
 .blog_card_1 > img {
 	height: 155px;
 	width: 230px;
+	cursor: pointer;
 }
 .blog_card_2 {
 	display: flex;
@@ -145,6 +146,7 @@
 	padding: 10px;
 	padding-left: 0;
 	color: #292929;
+	cursor: pointer;
 }
 .blog_card_2_1 {
 	display: flex;
@@ -233,6 +235,7 @@
 	color: #757575;
 	margin: 15px 15px 15px 0;
 	border-radius: 3px;
+	cursor: pointer;
 }
 .footer_landing {
 	display: flex;

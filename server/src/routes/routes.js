@@ -170,5 +170,23 @@ router.get("/:id/followingblogs", async (req, res) => {
 			.send({ status: "failed", message: "Something went wrong" });
 	}
 });
-
+router.post("/topicsblog", async (req, res) => {
+	try {
+		const topic = req.body.topic;
+		const allBlogs = await Blog.find()
+			.populate("author")
+			.populate("topic")
+			.populate("comments.author")
+			.lean()
+			.exec();
+		const data = allBlogs.filter((item) => {
+			return item.topic.title === topic;
+		});
+		res.status(201).send({ data });
+	} catch (e) {
+		return res
+			.status(400)
+			.send({ status: "failed", message: "Something went wrong" });
+	}
+});
 module.exports = router;

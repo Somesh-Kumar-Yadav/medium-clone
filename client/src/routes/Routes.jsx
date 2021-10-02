@@ -32,6 +32,9 @@ export default function Routes() {
         <Route path="/creator">
           <WritePage />
         </Route>
+        <Route path="/topic/:topic">
+          <TopicPage/>
+          </Route>
         <Route path="/story">
           <OurStroryPage />
         </Route>
