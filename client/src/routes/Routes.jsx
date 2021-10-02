@@ -9,6 +9,7 @@ import Membership from "../components/Membership/Membership";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlogs } from "../redux/auth/actions";
 import { Loading } from "../components/HomePage/Loading";
+import TopicPage from "../components/TopicPage/TopicPage";
 
 export default function Routes() {
   const auth = Boolean(useSelector((state) => state.auth.isAuth));
@@ -16,10 +17,10 @@ export default function Routes() {
   console.log(load);
   const dispatch = useDispatch();
   React.useEffect(() => {
-    dispatch(getBlogs())
+    dispatch(getBlogs());
   }, [dispatch]);
   if (load) {
-    return <Loading />
+    return <Loading />;
   }
   return (
     <>
@@ -34,10 +35,13 @@ export default function Routes() {
           <OurStroryPage />
         </Route>
         <Route path="/newStory">
-          <CreateStrory/>
-          </Route>
+          <CreateStrory />
+        </Route>
         <Route path="/membership">
           <Membership />
+        </Route>
+        <Route path="/:id">
+          <TopicPage />
         </Route>
       </Switch>
     </>

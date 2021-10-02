@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginSignup from "../../components/LoginSignup/LoginSignup";
 import Profile from "../../components/Profile/Profile";
+import axios from "axios";
 
 const CreateStrory = () => {
   const [open, setOpen] = useState(true);
@@ -20,11 +21,26 @@ const CreateStrory = () => {
   const handleChnge = (value) => {
     setBody(value);
   };
-  const formData = new FormData();
+  let bodyData = new FormData();
 
   const submitData = () => {
-    formData.append(file);
-    console.log(formData);
+    bodyData.append("file", file);
+    bodyData.append("name", "name");
+    axios({
+      method: "post",
+      url: "localhost:2345/blogs",
+      data: bodyData,
+      // headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(function (response) {
+        //handle success
+        console.log(response);
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
+    console.log(bodyData);
   };
   if (!user) {
     return <LoginSignup status={open} set={setOpen} />;
