@@ -8,11 +8,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LoginSignup from "../../components/LoginSignup/LoginSignup";
 import Profile from "../../components/Profile/Profile";
-<<<<<<< HEAD
-import axios from "axios";
-=======
 import { postBlogs } from "../../redux/user/actions";
->>>>>>> de8edf30131498e3c00fe4c37dc2fdb53cd5fbf3
 
 const CreateStrory = () => {
   const [open, setOpen] = useState(true);
