@@ -124,8 +124,18 @@ router.get("/:id/nottopics", async (req, res) => {
 });
 router.get("/:id/notfollow", async (req, res) => {
 	try {
-		const user = await User.findById(req.params.id).lean().exec();
-		const allUser = await User.find().lean().exec();
+		const user = await User.findById(req.params.id)
+			.populate("followers")
+			.populate("followingTopics")
+			.populate("following")
+			.lean()
+			.exec();
+		const allUser = await User.find()
+			.populate("followers")
+			.populate("followingTopics")
+			.populate("following")
+			.lean()
+			.exec();
 		const peoples = user.following;
 		let ids = peoples.map((item) => {
 			return item.name;
