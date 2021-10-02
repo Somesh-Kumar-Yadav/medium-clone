@@ -45,6 +45,9 @@
 	cursor: pointer;
 	margin-left: 0;
 }
+.home_page_topics_2 {
+	display: none;
+}
 .home_page_topic:hover {
 	background: rgb(230, 230, 230);
 }

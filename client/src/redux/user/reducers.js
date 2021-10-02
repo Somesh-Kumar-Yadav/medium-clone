@@ -8,6 +8,7 @@ import {
 	POST_BLOG_FAILURE,
 	POST_BLOG_SUCCESS,
 	POST_BLOG_REQUEST,
+	TOPIC_SUCCESS,
 } from "./actionTypes";
 const initState = {
 	blogs: [],
@@ -69,6 +70,11 @@ export const userReducer = (state = initState, { type, payload }) => {
 				...state,
 				isError: true,
 				isLoading: false,
+			};
+		case TOPIC_SUCCESS:
+			return {
+				...state,
+				followingTopics: [...state.followingTopics, payload],
 			};
 		default:
 			return state;

@@ -33,8 +33,17 @@ router.post("/:id/follow/:followingid", async (req, res) => {
 router.post("/:id/topic/:topicid", async (req, res) => {
 	let user;
 	try {
-		user = await User.findById(req.params.id).lean().exec();
-		if (user.followingTopics.indexOf(req.params.topicid) === -1) {
+		user = await User.findById(req.params.id)
+			.populate("followers")
+			.populate("followingTopics")
+			.populate("following")
+			.lean()
+			.exec();
+		const str = user.followingTopics.map((item) => {
+			return item.title;
+		});
+		const topic = await Topic.findById(req.params.topicid).lean().exec();
+		if (!str.includes(topic.title)) {
 			const topicList = [...user.followingTopics, req.params.topicid];
 			user = await User.findByIdAndUpdate(req.params.id, {
 				followingTopics: topicList,
@@ -97,7 +106,12 @@ router.get("/trending", async (req, res) => {
 });
 router.get("/:id/topics", async (req, res) => {
 	try {
-		const user = await User.findById(req.params.id).lean().exec();
+		const user = await User.findById(req.params.id)
+			.populate("followers")
+			.populate("followingTopics")
+			.populate("following")
+			.lean()
+			.exec();
 		const topics = user.followingTopics;
 		res.status(200).send({ topics });
 	} catch (e) {
@@ -108,9 +122,14 @@ router.get("/:id/topics", async (req, res) => {
 });
 router.get("/:id/nottopics", async (req, res) => {
 	try {
-		const user = await User.findById(req.params.id).lean().exec();
+		const user = await User.findById(req.params.id)
+			.populate("followers")
+			.populate("followingTopics")
+			.populate("following")
+			.lean()
+			.exec();
 		const allTopics = await Topic.find().lean().exec();
-		const topics = user.followingTopics;
+		const topics = user.followingTopics.map((item) => item.title);
 		const topic = allTopics.filter((item) => {
 			return !topics.includes(item.title);
 		});

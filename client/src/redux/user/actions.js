@@ -8,6 +8,7 @@ import {
 	POST_BLOG_FAILURE,
 	POST_BLOG_SUCCESS,
 	POST_BLOG_REQUEST,
+	TOPIC_SUCCESS,
 } from "./actionTypes";
 import axios from "axios";
 
@@ -39,7 +40,9 @@ const postSuccess = () => {
 const postFailure = () => {
 	return { type: POST_BLOG_FAILURE };
 };
-
+export const topicSelect = (payload) => {
+	return { type: TOPIC_SUCCESS, payload };
+};
 export const getUserData = (payload) => (dispatch) => {
 	try {
 		dispatch(getRequest());

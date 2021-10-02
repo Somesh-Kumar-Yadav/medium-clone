@@ -1,16 +1,25 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styles from "../../styles/HomePage.module.css";
-import { Link } from "react-router-dom";
-
+import { topicSelect } from "../../redux/user/actions"
+import axios from "axios";
+import { useSelector } from "react-redux";
 export const HomePageTopics = ({ topic }) => {
-  return (
-    <span className={styles.home_page_topics}>
-      <Link
-        style={{ textDecoration: "none", color: "rgb(58, 57, 57)" }}
-        to={{ pathname: `/${topic.title}`, state: { name: topic.title } }}
-      >
+  const [selected, setSelected] = React.useState(false);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user.user);
+  const handleClick = () => {
+    setSelected(true);
+    axios.post(`http://localhost:2345/${user._id}/topic/${topic._id}`)
+    dispatch(topicSelect(topic));
+  }
+  return <>
+    {
+      selected ? <span className={styles.home_page_topics_2}>
         {topic.title}
-      </Link>
+    </span>:<span onClick={handleClick} className={styles.home_page_topics}>
+        {topic.title}
     </span>
-  );
+    }
+  </>
 };
