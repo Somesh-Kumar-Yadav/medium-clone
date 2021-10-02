@@ -5,6 +5,9 @@ import {
 	GET_TOPIC_SUCCESS_2,
 	GET_PEOPLE_SUCCESS_2,
 	GET_FOLLOWING_TOPIC_SUCCESS_2,
+	POST_BLOG_FAILURE,
+	POST_BLOG_SUCCESS,
+	POST_BLOG_REQUEST,
 } from "./actionTypes";
 const initState = {
 	blogs: [],
@@ -44,6 +47,24 @@ export const userReducer = (state = initState, { type, payload }) => {
 				followingTopics: [...payload],
 			};
 		case GET_DATA_FAILURE_2:
+			return {
+				...state,
+				isError: true,
+				isLoading: false,
+			};
+		case POST_BLOG_REQUEST:
+			return {
+				...state,
+				isError: false,
+				isLoading: true,
+			};
+		case POST_BLOG_SUCCESS:
+			return {
+				...state,
+				isError: false,
+				isLoading: false,
+			};
+		case POST_BLOG_FAILURE:
 			return {
 				...state,
 				isError: true,

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBlogs } from "../redux/auth/actions";
 import { BlogPost } from "../components/BlogPage/BlogPage";
 import { Loading } from "../components/HomePage/Loading";
+import TopicPage from "../components/TopicPage/TopicPage";
 
 export default function Routes() {
   const auth = Boolean(useSelector((state) => state.auth.isAuth));
