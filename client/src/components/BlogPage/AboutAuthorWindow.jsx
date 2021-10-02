@@ -2,6 +2,7 @@ import styled from "styled-components";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
+// import CloseIcon from "@mui/icons-material/Close";
 import Paper from "@material-ui/core/Paper";
 import useScrollPosition from "@react-hook/window-scroll";
 
@@ -50,15 +51,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export const AboutAuthorWindow = (
-  {
-    //   name,
-    //   about,
-    //   followers,
-    //   likes,
-    //   comments,
-  }
-) => {
+export const AboutAuthorWindow = ({ data }) => {
   const [open, setOpen] = useState(false);
 
   const useStyles = makeStyles({
@@ -66,39 +59,97 @@ export const AboutAuthorWindow = (
       fontSize: "1.3rem",
       margin: "5px",
       textAlign: "left",
-      color: "rgb(240,0,84)",
+      width: "400px",
     },
-    p: {
-      padding: "10px 15px",
-      color: "rgb(15, 20, 30);",
+
+    header: {
+      width: "90%",
+      margin: "auto",
+      display: "flex",
+      justifyContent: "space-between",
+      padding: "10px 10px",
+    },
+
+    inpDiv: {
+      width: "90%",
+      marign: "auto",
+      boder: "1px solid red",
+    },
+
+    input: {
+      height: "30px",
+      padding: "20px 20px",
+      width: "95%",
+      marginLeft: "8%",
+      marginTop: "20px",
+      marginBottom: "40px",
+    },
+
+    comments: {
+      borderBottom: "solid 1px rgb(230, 230, 230)",
+    },
+    commentsDiv: {
+      width: "90%",
+      margin: "auto",
+      fontSize: "0.9rem",
+    },
+    commentsHeader: {
+      display: "flex",
+      alignItems: "center",
+    },
+    img: {
+      width: "30px",
+      borderRadius: "50%",
+      margin: "30px 10px",
+    },
+    icons: {
+      fontSize: "1.1rem",
+      padding: "20px 0px",
     },
   });
 
+  let name;
+  let likes;
+  let comments;
+
   const classes = useStyles();
   const scrollY = useScrollPosition(60 /*fps*/);
-  console.log(scrollY);
+  if (data) {
+    name = data.author.name;
+    likes = 90;
+    comments = [
+      {
+        urlImg:
+          "https://miro.medium.com/fit/c/32/32/1*8xG4y5aHwBYGgTjE9Zr0VQ.jpeg",
+        text: "I have one doubt about the first tip. If we create a base component and variant components, while searching in the Assests panel, it’ll display two components (both base component and variant’s first component). Is there any way to avoid that?",
+        author: { name: "name" },
+      },
+    ];
+  }
 
   return (
     <>
-      {scrollY > 350 ? (
-        <Wrapper>
-          <p>{name}</p>
-          <div className="follow">
-            <button className="">Follow</button>
-          </div>
-          <div className="icons">
-            <div>
-              <i class="fas fa-hand-holding-heart"></i>
-              <p>{likes}</p>
-            </div>
-            <div onClick={() => setOpen(true)}>
-              <i class="far fa-comment"></i>
+      {scrollY > 350
+        ? data && (
+            <Wrapper>
+              <p>{name}</p>
+              <div className="follow">
+                <button className="">Follow</button>
+              </div>
+              <div className="icons">
+                <div>
+                  <i class="fas fa-hand-holding-heart"></i>
+                  <p>{likes}</p>
+                </div>
+                <div onClick={() => setOpen(true)}>
+                  <i class="far fa-comment"></i>
 
-              <p> {comments} </p>
-            </div>
-          </div>
-        </Wrapper>
-      ) : null}
+                  <p> {comments.length} </p>
+                </div>
+              </div>
+            </Wrapper>
+          )
+        : null}
 
       <SwipeableDrawer
         className={classes.drawer}
@@ -112,9 +163,35 @@ export const AboutAuthorWindow = (
         }}
       >
         <div className={classes.drawerDiv}>
-          <Paper>
-            <h1> Comments Section</h1>
-          </Paper>
+          <div className={classes.header}>
+            <h4> Responses {`(${comments?.length})`} </h4>
+
+            <i onClick={() => setOpen(false)} class="fas fa-times"></i>
+          </div>
+          <div className={classes.inpDiv}>
+            <input
+              className={classes.input}
+              type="text"
+              name=""
+              id=""
+              placeholder="What's your thoughts"
+            />
+          </div>
+          <div className={classes.comments}>
+            {comments?.map((el) => (
+              <div className={classes.commentsDiv}>
+                <div className={classes.commentsHeader}>
+                  <img className={classes.img} src={el.urlImg} alt="" />
+                  <p>{el.author.name}</p>
+                </div>
+                <div>{el.text}</div>
+
+                <div className={classes.icons}>
+                  <i class="fas fa-hand-holding-heart"></i>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </SwipeableDrawer>
     </>
@@ -122,6 +199,3 @@ export const AboutAuthorWindow = (
 };
 
 // temp
-const name = "author name";
-const likes = 11;
-const comments = 5;
