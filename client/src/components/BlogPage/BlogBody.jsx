@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -64,38 +65,65 @@ const Wrapper = styled.div`
 `;
 
 export const BlogBody = ({ data }) => {
-  const { description, title, author, date, featureImg, text } = { ...data };
-  console.log("dt", description, title, author, date, featureImg, text);
+  const { description, title, author, featureImg, text, updatedAt } = {
+    ...data,
+  };
+
+  if (data) {
+    var split = updatedAt.split("-");
+    var date = +split[2].slice(0, 2);
+    var month = +split[1];
+
+    date = date < 9 ? "0" + date : date;
+  }
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
   return (
     <Wrapper>
-      <div className="wrapper">
-        <h2> {title}</h2>
-        <p className="desc"> {description}</p>
-        <div className="authorDesc">
-          <div className="div1">
-            <p>{author}</p>
-            <p>{date}</p>
-            <p> 4 min read</p>
+      {data && (
+        <div className="wrapper">
+          <h2> {title}</h2>
+          <p className="desc"> {description}</p>
+          <div className="authorDesc">
+            <div className="div1">
+              <p>{author.name}</p>
+              <p>{`${months[month + 1]} ${date}`}</p>
+              <p> 4 min read</p>
+            </div>
+            <div className="div2">
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-linkedin-in"></i>
+              <i class="fas fa-link"></i>
+              <i id="fb" class="fab fa-facebook-f"></i>
+            </div>
           </div>
-          <div className="div2">
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-linkedin-in"></i>
-            <i class="fas fa-link"></i>
-            <i id="fb" class="fab fa-facebook-f"></i>
+          <img src={featureImg} alt="" />
+          <div className="body">
+            {/* <p>{body}</p> */}
+            {text &&
+              text.split("\n").map((p) => (
+                <>
+                  <p>{p}</p>
+                  <br />
+                </>
+              ))}
           </div>
         </div>
-        <img src={featureImg} alt="" />
-        <div className="body">
-          {/* <p>{body}</p> */}
-          {text &&
-            text.split(".").map((p) => (
-              <>
-                <p>{p}</p>
-                <br />
-              </>
-            ))}
-        </div>
-      </div>
+      )}
     </Wrapper>
   );
 };

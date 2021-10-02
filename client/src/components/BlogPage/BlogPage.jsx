@@ -5,15 +5,18 @@ import { BlogBody } from "./BlogBody";
 import { FollowNav } from "./FollowNav";
 
 export const BlogPost = () => {
-  const blogs = useSelector((state) => state.auth.blogs);
-
-  let data = blogs[0];
   useEffect(() => {}, []);
 
+  const blogs = useSelector((state) => state.auth.blogs);
+
+  console.log(blogs);
+
+  let data = blogs[0];
+  console.log(blogs);
   return (
     <div>
       <FollowNav />
-      <AboutAuthorWindow />
+      <AboutAuthorWindow data={data} />
       <BlogBody data={data} />
     </div>
   );
