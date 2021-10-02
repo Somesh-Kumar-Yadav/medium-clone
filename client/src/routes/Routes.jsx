@@ -8,6 +8,7 @@ import { CreateStrory } from "../pages/createStory/CreateStrory";
 import Membership from "../components/Membership/Membership";
 import { useDispatch, useSelector } from "react-redux";
 import { getBlogs } from "../redux/auth/actions";
+import { BlogPost } from "../components/BlogPage/BlogPage";
 import { Loading } from "../components/HomePage/Loading";
 import TopicPage from "../components/TopicPage/TopicPage";
 
@@ -40,8 +41,8 @@ export default function Routes() {
         <Route path="/membership">
           <Membership />
         </Route>
-        <Route path="/:id">
-          <TopicPage />
+        <Route path="/blogs">
+          <BlogPost />
         </Route>
       </Switch>
     </>

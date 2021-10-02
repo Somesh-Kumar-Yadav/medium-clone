@@ -5,42 +5,37 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoginSignup from "../../components/LoginSignup/LoginSignup";
 import Profile from "../../components/Profile/Profile";
+<<<<<<< HEAD
 import axios from "axios";
+=======
+import { postBlogs } from "../../redux/user/actions";
+>>>>>>> de8edf30131498e3c00fe4c37dc2fdb53cd5fbf3
 
 const CreateStrory = () => {
   const [open, setOpen] = useState(true);
-  const user = useSelector((state) => state.auth.user.user);
   const [body, setBody] = useState("");
-  const [file, setFile] = useState();
-
-  console.log(file);
-  console.log(body);
-  const handleChnge = (value) => {
-    setBody(value);
-  };
-  let bodyData = new FormData();
-
+  const [file, setFile] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [topic, setTopic] = useState("");
+  const user = useSelector((state) => state.auth.user.user);
+  const dispatch = useDispatch();
   const submitData = () => {
-    bodyData.append("file", file);
-    bodyData.append("name", "name");
-    axios({
-      method: "post",
-      url: "localhost:2345/blogs",
-      data: bodyData,
-      // headers: { "Content-Type": "multipart/form-data" },
-    })
-      .then(function (response) {
-        //handle success
-        console.log(response);
-      })
-      .catch(function (response) {
-        //handle error
-        console.log(response);
-      });
-    console.log(bodyData);
+    if (body.length === 0|| !file || title.length === 0 || description.length === 0 || topic.length === 0) {
+      alert("Some fields are empty");
+      return;
+    };
+    const data = new FormData()
+    data.append("image", file)
+    data.append("text", body);
+    data.append("title", title);
+    data.append("description", description);
+    data.append("author", user._id);
+    data.append("topic", topic);
+    dispatch(postBlogs(data));
   };
   if (!user) {
     return <LoginSignup status={open} set={setOpen} />;
@@ -75,16 +70,19 @@ const CreateStrory = () => {
         </div>
         <div className="editor">
           <div className="mainDiv1">
-            <input type="text" name="title" placeholder="Write Title..." />
+            <input type="text" name="title" value={title} onChange={(e)=>{setTitle(e.target.value)}} placeholder="Write Title..." />
             <input
               type="text"
               name="description"
+              value={description}
+              onChange={(e)=>{setDescription(e.target.value)}}
               placeholder="Write Description..."
             />
             <div className="mainDiv2">
               <input
                 type="text"
-                onChange={handleChnge}
+                value={topic}
+                onChange={(e)=>{setTopic(e.target.value)}}
                 name="topic"
                 placeholder="Write Topic..."
               />
@@ -92,14 +90,16 @@ const CreateStrory = () => {
                 type="file"
                 name="file"
                 onChange={(event) => setFile(event.target.files[0])}
+                accept="png jpg jpeg"
+                // onChange={imageHandler}
                 placeholder="Choose Image"
               />
             </div>
           </div>
           <ReactQuill
             placeholder="Your Story..."
-            onChange={handleChnge}
-            value={body}
+            onChange={(e) => { setBody(e) }}
+          value={body}
           />
         </div>
       </div>

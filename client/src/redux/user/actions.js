@@ -5,6 +5,9 @@ import {
 	GET_TOPIC_SUCCESS_2,
 	GET_PEOPLE_SUCCESS_2,
 	GET_FOLLOWING_TOPIC_SUCCESS_2,
+	POST_BLOG_FAILURE,
+	POST_BLOG_SUCCESS,
+	POST_BLOG_REQUEST,
 } from "./actionTypes";
 import axios from "axios";
 
@@ -25,6 +28,16 @@ const getFollowingTopic = (topics) => {
 };
 const getFailure = () => {
 	return { type: GET_DATA_FAILURE_2 };
+};
+
+const postRequest = () => {
+	return { type: POST_BLOG_REQUEST };
+};
+const postSuccess = () => {
+	return { type: POST_BLOG_SUCCESS };
+};
+const postFailure = () => {
+	return { type: POST_BLOG_FAILURE };
 };
 
 export const getUserData = (payload) => (dispatch) => {
@@ -49,5 +62,19 @@ export const getUserData = (payload) => (dispatch) => {
 		});
 	} catch (e) {
 		dispatch(getFailure());
+	}
+};
+export const postBlogs = (payload) => (dispatch) => {
+	const config = {
+		headers: { "Content-Type": "multipart/form-data" },
+	};
+	try {
+		dispatch(postRequest());
+		axios.post("http://localhost:2345/blogs", payload, config).then((res) => {
+			console.log(res.data);
+			dispatch(postSuccess());
+		});
+	} catch (e) {
+		dispatch(postFailure());
 	}
 };

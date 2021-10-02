@@ -132,7 +132,6 @@ router.get("/:id/notfollow", async (req, res) => {
 		});
 		ids = [...ids, user.name];
 		const people = allUser.filter((item) => {
-			console.log(item.name);
 			return !ids.includes(item.name);
 		});
 		const data = people.slice(0, 3);

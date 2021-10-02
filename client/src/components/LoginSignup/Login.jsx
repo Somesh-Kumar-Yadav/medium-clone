@@ -21,7 +21,7 @@ const Login = ({ swap, status, set }) => {
   return (
     <div className={styles.login}>
       <h1 className={styles.login_h2}>Welcome back.</h1>
-      <GoogleLogin
+      <GoogleLogin 
         clientId="378817930652-26drd8dhlmr4qet0ilu2qts92m12mpdr.apps.googleusercontent.com"
         render={(renderProps) => (
           <button
