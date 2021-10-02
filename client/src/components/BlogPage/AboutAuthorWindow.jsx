@@ -76,7 +76,6 @@ export const AboutAuthorWindow = (
 
   const classes = useStyles();
   const scrollY = useScrollPosition(60 /*fps*/);
-  console.log(scrollY);
 
   return (
     <>
