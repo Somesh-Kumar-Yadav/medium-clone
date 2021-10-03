@@ -2,10 +2,10 @@ import styled from "styled-components";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
-import axios from "axios"
-import { useDispatch ,useSelector} from "react-redux";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import useScrollPosition from "@react-hook/window-scroll";
-import {blogsSingleSuccess} from "../../redux/auth/actions"
+import { blogsSingleSuccess } from "../../redux/auth/actions";
 
 const Wrapper = styled.div`
   position: fixed;
@@ -40,8 +40,8 @@ const Wrapper = styled.div`
     border: none;
     color: white;
   }
-  .pointer{
-    cursor:pointer;
+  .pointer {
+    cursor: pointer;
   }
   .subscribe {
     padding: 10px 10px;
@@ -69,27 +69,37 @@ const Wrapper = styled.div`
 
 export const AboutAuthorWindow = ({ data }) => {
   const [open, setOpen] = useState(false);
-
+  const [liked, setLiked] = useState(false);
   // const [active, setActive] = useState(false);
 
   const [likes, setLikes] = useState(data.claps);
   const [comments, setComments] = useState(data.comments);
-  const [text,setText] = useState("")
-  const user = useSelector(state => state.auth.user.user);
+  const [text, setText] = useState("");
+  const user = useSelector((state) => state.auth.user.user);
   const dispatch = useDispatch();
   const handleClaps = () => {
-    axios.patch(`http://localhost:2345/blogs/${data._id}`, { claps: likes + 1 });
+    axios.patch(`http://localhost:2345/blogs/${data._id}`, {
+      claps: likes + 1,
+    });
     data.claps += 1;
-    dispatch(blogsSingleSuccess(data))
+    dispatch(blogsSingleSuccess(data));
     setLikes(likes + 1);
-  }
+  };
   const handleComments = () => {
-    axios.patch(`http://localhost:2345/blogs/${data._id}`, {"comments":[{"author":"6156a349b35627007c8aec34","text":"First Comment"}]});
-    data.comments = [...data.comments,{author:{name:user.name,imageUrl:user.imageUrl},text:text}];
-    dispatch(blogsSingleSuccess(data))
-    setComments([...comments, { author: { name: user.name, imageUrl: user.imageUrl }, text: text }]);
-    setText("")
-  }
+    axios.patch(`http://localhost:2345/blogs/${data._id}`, {
+      comments: [{ author: "6156a349b35627007c8aec34", text: "First Comment" }],
+    });
+    data.comments = [
+      ...data.comments,
+      { author: { name: user.name, imageUrl: user.imageUrl }, text: text },
+    ];
+    dispatch(blogsSingleSuccess(data));
+    setComments([
+      ...comments,
+      { author: { name: user.name, imageUrl: user.imageUrl }, text: text },
+    ]);
+    setText("");
+  };
   const useStyles = makeStyles({
     drawerDiv: {
       fontSize: "1.3rem",
@@ -109,27 +119,8 @@ export const AboutAuthorWindow = ({ data }) => {
 
     inpDiv: {
       width: "90%",
-      margin: "auto",
-      // border: "1px solid red",
-      display:"flex"
-    },
-
-    inpBtn: {
-      marginTop: "20px",
-      padding: "15px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems:"center",
-      marginBottom: "40px",
-      margin: "10px",
-      height: "43px",
-      fontSize: "20px",
-      width: "43px",
-      borderRadius: "50%",
-      color: "white",
-      background: "green",
-      border: "none",
-      cursor:"pointer"
+      marign: "auto",
+      boder: "1px solid red",
     },
     input: {
       height: "30px",
@@ -140,10 +131,27 @@ export const AboutAuthorWindow = ({ data }) => {
       marginBottom: "40px",
     },
 
-    comments: {
-      borderBottom: "solid 1px rgb(230, 230, 230)",
+    inpBtn: {
+      marginTop: "20px",
+      padding: "15px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      marginBottom: "40px",
+      margin: "10px",
+      height: "43px",
+      fontSize: "20px",
+      width: "43px",
+      borderRadius: "50%",
+      color: "white",
+      background: "green",
+      border: "none",
+      cursor: "pointer",
     },
+
+    comments: {},
     commentsDiv: {
+      borderBottom: "solid 1px rgb(230, 230, 230)",
       width: "90%",
       margin: "auto",
       fontSize: "0.9rem",
@@ -159,13 +167,19 @@ export const AboutAuthorWindow = ({ data }) => {
     },
     icons: {
       fontSize: "1.1rem",
-      padding: "20px 0px",
+      padding: "20px 15px",
+      display: "flex",
+      justifyContent: "flex-end",
     },
     sendIcon: {
       position: "absolute",
       top: "75px",
       right: "50px",
       cursor: "pointer",
+    },
+    text: {
+      margin: "0px 15px",
+      fontSize: "1rem",
     },
   });
 
@@ -189,8 +203,17 @@ export const AboutAuthorWindow = ({ data }) => {
                 <button className="">Follow</button>
               </div>
               <div className="icons">
-              <div className="pointer" onClick={() => {handleClaps()}}>
-                  <i class="fas fa-hand-holding-heart"></i>
+                <div
+                  className="pointer"
+                  onClick={() => {
+                    handleClaps();
+                  }}
+                >
+                  {liked ? (
+                    <i style={{ color: "red" }} class="fas fa-heart"></i>
+                  ) : (
+                    <i onClick={() => setLiked(true)} class="far fa-heart"></i>
+                  )}
                   <p>{likes}</p>
                 </div>
                 <div className="pointer" onClick={() => setOpen(true)}>
@@ -221,28 +244,44 @@ export const AboutAuthorWindow = ({ data }) => {
             <i onClick={() => setOpen(false)} class="fas fa-times"></i>
           </div>
           <div className={classes.inpDiv}>
+            <div
+              onClick={handleComments}
+              style={{ color: "rgb(26,137,23)" }}
+              className={classes.sendIcon}
+            >
+              <i class="fas fa-paper-plane"></i>
+            </div>
             <input
               className={classes.input}
               type="text"
               name=""
               id=""
               value={text}
-              onChange={(e)=>{setText(e.target.value)}}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
               placeholder="What's your thoughts"
             />
-            <button onClick={handleComments} className={classes.inpBtn}> <i class="fas fa-paper-plane"></i></button>
+            {/* <button onClick={handleComments} className={classes.inpBtn}>
+              {" "}
+              <i class="fas fa-paper-plane"></i>
+            </button> */}
           </div>
           <div className={classes.comments}>
             {comments?.map((el) => (
               <div className={classes.commentsDiv}>
                 <div className={classes.commentsHeader}>
-                  <img className={classes.img} src={el.author.imageUrl} alt="" />
+                  <img
+                    className={classes.img}
+                    src={el.author.imageUrl}
+                    alt=""
+                  />
                   <p>{el.author.name}</p>
                 </div>
-                <div>{el.text}</div>
+                <div className={classes.text}>{el.text}</div>
 
                 <div className={classes.icons}>
-                  <i class="fas fa-hand-holding-heart"></i>
+                  <i style={{ color: "red" }} class="far fa-heart"></i>
                 </div>
               </div>
             ))}
