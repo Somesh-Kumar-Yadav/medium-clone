@@ -6,6 +6,7 @@ import { BlogBody } from "./BlogBody";
 import { FollowNav } from "./FollowNav";
 
 export const BlogPost = () => {
+
   useEffect(() => { }, []);
   const [open, setOpen] = useState(true);
   const data = useSelector((state) => state.auth.singleBlog);
@@ -13,6 +14,7 @@ export const BlogPost = () => {
   if (!user) {
     return <LoginSignup status={open} set={setOpen} />;
   }
+
   return (
     <div>
       <FollowNav data={data}/>

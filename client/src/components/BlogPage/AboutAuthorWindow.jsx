@@ -18,6 +18,18 @@ const Wrapper = styled.div`
   height: 200px;
   left: 20px;
   color: rgb(117, 117, 117);
+
+  .imgDiv {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+  }
+
   .follow {
     display: flex;
   }
@@ -57,6 +69,9 @@ const Wrapper = styled.div`
 
 export const AboutAuthorWindow = ({ data }) => {
   const [open, setOpen] = useState(false);
+
+  const [active, setActive] = useState(false);
+
   const [likes, setLikes] = useState(data.claps);
   const [comments, setComments] = useState(data.comments);
   const [text,setText] = useState("")
@@ -82,6 +97,7 @@ export const AboutAuthorWindow = ({ data }) => {
       margin: "5px",
       textAlign: "left",
       width: "400px",
+      position: "relative",
     },
 
     header: {
@@ -146,6 +162,12 @@ export const AboutAuthorWindow = ({ data }) => {
       fontSize: "1.1rem",
       padding: "20px 0px",
     },
+    sendIcon: {
+      position: "absolute",
+      top: "75px",
+      right: "50px",
+      cursor: "pointer",
+    },
   });
 
   let name;
@@ -154,8 +176,15 @@ export const AboutAuthorWindow = ({ data }) => {
   const scrollY = useScrollPosition(60 /*fps*/);
   if (data) {
     name = data.author.name;
-    
   }
+
+  const handleInp = (e) => {
+    if (e.target.value !== "") {
+      setActive(true);
+    }
+  };
+
+  const handlePost = () => {};
 
   return (
     <>
@@ -163,6 +192,9 @@ export const AboutAuthorWindow = ({ data }) => {
         ? data && (
             <Wrapper>
               <p>{name}</p>
+              <div className="imgDiv">
+                <img src={imageUrl} alt="" />
+              </div>
               <div className="follow">
                 <button className="">Follow</button>
               </div>
@@ -199,8 +231,16 @@ export const AboutAuthorWindow = ({ data }) => {
             <i onClick={() => setOpen(false)} class="fas fa-times"></i>
           </div>
           <div className={classes.inpDiv}>
+            <div
+              onClick={handlePost}
+              style={{ color: active ? "limegreen" : "black" }}
+              className={classes.sendIcon}
+            >
+              <i class="fas fa-paper-plane"></i>
+            </div>
             <input
               className={classes.input}
+              onKeyDown={handleInp}
               type="text"
               name=""
               id=""
