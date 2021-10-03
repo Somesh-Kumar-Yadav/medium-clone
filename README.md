@@ -7,6 +7,8 @@ Medium is an American online publishing platform developed by Evan Williams and 
 <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="25px">Visit our live website
 https://booking-com.netlify.app
 
+[Read Blog](https://medium.com/@d_ransingh88/a-cloned-version-of-medium-com-c6f18187cacf)
+
 ## Installation
 
 Medium.com requires [Node.js](https://nodejs.org/) to run.
