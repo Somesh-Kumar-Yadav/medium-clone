@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { convertDates } from "../../utils/convertDates";
 import { convertMin } from "../../utils/convertMin";
+import parse from "html-react-parser";
 
 const Wrapper = styled.div`
   display: flex;
@@ -84,6 +85,9 @@ export const BlogBody = ({ data }) => {
   };
   const date = convertDates(data.createdAt);
   const time = convertMin(data.text);
+
+  console.log("text", text[0]);
+
   return (
     <Wrapper>
       {data && (
@@ -108,13 +112,16 @@ export const BlogBody = ({ data }) => {
           </div>
           <img src={featureImg} alt="" />
           <div className="body">
-            {text &&
+            {!text[0] === ">" ? (
               text.split("\n").map((p) => (
                 <>
                   <p>{p}</p>
                   <br />
                 </>
-              ))}
+              ))
+            ) : (
+              <div>{parse(`${text}`)}</div>
+            )}
           </div>
         </div>
       )}

@@ -1,6 +1,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  background: white;
 }
 
 .dropdown_content {
@@ -8,11 +9,11 @@
   position: absolute;
   right: 10px;
   text-align: center;
-  background-color: #f9f9f9;
-  border: 1px solid black;
+  background-color: white;
+  border: 1px solid rgb(230, 230, 230);
   border-radius: 5px;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
   z-index: 1;
 }
 
@@ -44,7 +45,8 @@
 
 .profileHeader {
   text-align: center;
-  background-color: rgb(248, 247, 247);
+  background-color: white;
+  border-bottom: 1px solid rgb(230, 230, 230);
   padding: 10px;
 }
 .profilePic {
@@ -54,7 +56,7 @@
 }
 .line {
   height: 1px;
-  background-color: gray;
+  background-color: rgb(230, 230, 230);
   margin-bottom: 5px;
 }
 .logoutbtn {
@@ -62,7 +64,7 @@
   width: 98%;
   height: 50px;
   border: none;
-  border-top: 1px solid black;
+  border-top: 1px solid rgb(230, 230, 230);
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
