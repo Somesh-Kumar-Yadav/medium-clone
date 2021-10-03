@@ -2,8 +2,10 @@ import styled from "styled-components";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
-// import CloseIcon from "@mui/icons-material/Close";
+import axios from "axios"
+import { useDispatch } from "react-redux";
 import useScrollPosition from "@react-hook/window-scroll";
+import {blogsSingleSuccess} from "../../redux/auth/actions"
 
 const Wrapper = styled.div`
   position: fixed;
@@ -25,6 +27,9 @@ const Wrapper = styled.div`
     border-radius: 18px;
     border: none;
     color: white;
+  }
+  .pointer{
+    cursor:pointer;
   }
   .subscribe {
     padding: 10px 10px;
@@ -52,7 +57,15 @@ const Wrapper = styled.div`
 
 export const AboutAuthorWindow = ({ data }) => {
   const [open, setOpen] = useState(false);
-
+  const [likes, setLikes] = useState(data.claps);
+  const dispatch = useDispatch();
+  console.log(data);
+  const handleClaps = () => {
+    axios.patch(`http://localhost:2345/blogs/${data._id}`, { claps: likes + 1 });
+    data.claps += 1;
+    dispatch(blogsSingleSuccess(data))
+    setLikes(likes + 1);
+  }
   const useStyles = makeStyles({
     drawerDiv: {
       fontSize: "1.3rem",
@@ -108,14 +121,12 @@ export const AboutAuthorWindow = ({ data }) => {
   });
 
   let name;
-  let likes;
   let comments;
 
   const classes = useStyles();
   const scrollY = useScrollPosition(60 /*fps*/);
   if (data) {
     name = data.author.name;
-    likes = 90;
     comments = [
       {
         urlImg:
@@ -128,7 +139,7 @@ export const AboutAuthorWindow = ({ data }) => {
 
   return (
     <>
-      {scrollY > 350
+      {scrollY > 100
         ? data && (
             <Wrapper>
               <p>{name}</p>
@@ -136,11 +147,11 @@ export const AboutAuthorWindow = ({ data }) => {
                 <button className="">Follow</button>
               </div>
               <div className="icons">
-                <div>
+              <div className="pointer" onClick={() => {handleClaps()}}>
                   <i class="fas fa-hand-holding-heart"></i>
                   <p>{likes}</p>
                 </div>
-                <div onClick={() => setOpen(true)}>
+                <div className="pointer" onClick={() => setOpen(true)}>
                   <i class="far fa-comment"></i>
 
                   <p> {comments.length} </p>

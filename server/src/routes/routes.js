@@ -56,21 +56,19 @@ router.post("/:id/topic/:topicid", async (req, res) => {
 			.send({ status: "failed", message: "Something went wrong" });
 	}
 });
-router.post("/:blogid/blog/clap", async (req, res) => {
-	let blog;
-	try {
-		blog = await Blog.findById(req.params.blogid).lean().exec();
-		const clap = blog.clap;
-		blog = await Blog.findByIdAnyUpdate(req.params.blogid, {
-			clap: clap + 1,
-		});
-		res.status(200).send({ status: "success", message: "Clapped" });
-	} catch (e) {
-		return res
-			.status(400)
-			.send({ status: "failed", message: "Something went wrong" });
-	}
-});
+// router.patch("clap/:blogid", async (req, res) => {
+// 	let blog;
+// 	try {
+// 		await Blog.findByIdAnyUpdate(req.params.blogid, {
+// 			claps: req.body.claps,
+// 		});
+// 		res.status(201).send({ status: "success", message: "Clapped" });
+// 	} catch (e) {
+// 		return res
+// 			.status(400)
+// 			.send({ status: "failed", message: "Something went wrong" });
+// 	}
+// });
 router.post("/:blogid/comment", async (req, res) => {
 	let blog;
 	try {
