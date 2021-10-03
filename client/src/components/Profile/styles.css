@@ -46,6 +46,7 @@
 .profileHeader {
   text-align: center;
   background-color: white;
+  border-bottom: 1px solid rgb(230, 230, 230);
   padding: 10px;
 }
 .profilePic {

@@ -24,7 +24,7 @@ const Profile = () => {
             <img className="profilePic" src={user.imageUrl} alt="" />
             <h5>{user.name}</h5>
           </div>
-          <hr className="line" />
+          {/* <hr className="line" /> */}
           <p
             className="links"
             onClick={() => {
