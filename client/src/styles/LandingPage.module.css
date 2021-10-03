@@ -103,6 +103,10 @@
 	font-size: 15px;
 	color: rgba(41, 41, 41, 1);
 }
+.trending_card_2_2 {
+	margin: 5px 0;
+	cursor: pointer;
+}
 .trending_card_2_2 > h4 {
 	color: rgba(41, 41, 41, 1);
 	font-size: 19px;

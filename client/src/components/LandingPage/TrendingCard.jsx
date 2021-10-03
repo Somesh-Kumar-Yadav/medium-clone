@@ -2,10 +2,19 @@ import React from "react";
 import styles from "../../styles/LandingPage.module.css"
 import { convertDates } from "../../utils/convertDates";
 import { convertMin } from "../../utils/convertMin";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { blogsSingleSuccess } from "../../redux/auth/actions";
 
 export const TrendingCard = ({ num, blog }) => {
     const date = convertDates(blog.createdAt);
     const time = convertMin(blog.text);
+  const dispatch = useDispatch();
+    const history = useHistory();
+    const handleBlog = () => {
+    dispatch(blogsSingleSuccess(blog));
+    history.push("/blogs");
+  }
     return <div className={styles.trending_card}>
         <div className={styles.trending_card_1}>{num}</div>
         <div className={styles.trending_card_2}>
@@ -13,7 +22,7 @@ export const TrendingCard = ({ num, blog }) => {
                 <img src={blog.author.imageUrl} alt=""></img>
                 <h6>{blog.author.name}</h6>
             </span>
-            <span className={styles.trending_card_2_2}>
+            <span onClick={handleBlog} className={styles.trending_card_2_2}>
                 <h4>{blog.title}</h4>
             </span>
             <span className={styles.trending_card_2_3}>

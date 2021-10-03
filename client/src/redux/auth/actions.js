@@ -100,3 +100,12 @@ export const allTopicBlogs = (payload) => (dispatch) => {
 		dispatch(blogsFailure());
 	}
 };
+export const refreshData = () => (dispatch) => {
+	try {
+		axios.get("http://localhost:2345/blogs").then((res) => {
+			dispatch(getSuccess(res.data.blogs));
+		});
+	} catch (e) {
+		dispatch(getFailure());
+	}
+};
