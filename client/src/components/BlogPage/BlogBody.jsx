@@ -72,7 +72,7 @@ const Wrapper = styled.div`
 
   .body{
       margin:30px auto;
-      align-text:center;
+      text-align:center;
       font-size:1.2rem;
       line-height:1.8rem;
   }
