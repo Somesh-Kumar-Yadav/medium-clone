@@ -65,6 +65,7 @@ router.get("/:id", async (req, res) => {
 	}
 });
 router.patch("/:id", async (req, res) => {
+	console.log(req.body);
 	try {
 		const blog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
 			new: true,

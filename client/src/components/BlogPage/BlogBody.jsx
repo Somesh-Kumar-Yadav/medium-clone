@@ -1,5 +1,6 @@
-import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { convertDates } from "../../utils/convertDates";
+import { convertMin } from "../../utils/convertMin";
 
 const Wrapper = styled.div`
   display: flex;
@@ -78,35 +79,11 @@ const Wrapper = styled.div`
 `;
 
 export const BlogBody = ({ data }) => {
-  const { description, title, author, featureImg, text, updatedAt } = {
+  const { description, title, author, featureImg, text } = {
     ...data,
   };
-
-  if (data) {
-    var split = updatedAt.split("-");
-    var date = +split[2].slice(0, 2);
-    var month = +split[1];
-    var imageUrl =
-      "https://upload.wikimedia.org/wikipedia/commons/0/01/LinuxCon_Europe_Linus_Torvalds_03_%28cropped%29.jpg";
-
-    date = date < 9 ? "0" + date : date;
-  }
-
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-
+  const date = convertDates(data.createdAt);
+  const time = convertMin(data.text);
   return (
     <Wrapper>
       {data && (
@@ -119,8 +96,8 @@ export const BlogBody = ({ data }) => {
                 <img src={imageUrl} alt="" />
               </div>
               <p>{author.name}</p>
-              <p>{`${months[month + 1]} ${date}`}</p>
-              <p> 4 min read</p>
+              <p>{`${date}`}</p>
+              <p> {time} min read</p>
             </div>
             <div className="div2">
               <i class="fab fa-twitter"></i>

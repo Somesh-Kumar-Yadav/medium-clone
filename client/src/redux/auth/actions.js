@@ -10,6 +10,7 @@ import {
 	GET_BLOGS_REQUEST,
 	GET_BLOGS_SUCCESS,
 	GET_BLOGS_FAILURE,
+	GET_SINGLE_BLOG,
 } from "./actionTypes";
 import axios from "axios";
 
@@ -45,6 +46,9 @@ export const blogsSuccess = (payload) => {
 };
 export const blogsFailure = () => {
 	return { type: GET_BLOGS_FAILURE };
+};
+export const blogsSingleSuccess = (payload) => {
+	return { type: GET_SINGLE_BLOG, payload };
 };
 
 export const loginUser = (payload) => (dispatch) => {

@@ -2,10 +2,23 @@ import React from "react";
 import styles from "../../styles/LandingPage.module.css";
 import { convertDates } from "../../utils/convertDates";
 import { convertMin } from "../../utils/convertMin";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { allTopicBlogs, blogsSingleSuccess } from "../../redux/auth/actions";
 
 export const BlogCard = ({ blog }) => {
   const date = convertDates(blog.createdAt);
   const time = convertMin(blog.text);
+  const dispatch = useDispatch();
+    const history = useHistory();
+    const handleDispatch = (title) => {
+        dispatch(allTopicBlogs({topic:title}));
+      history.push(`/topic/${title}`);
+    }
+  const handleBlog = () => {
+    dispatch(blogsSingleSuccess(blog));
+    history.push("/blogs");
+  }
   return (
     <div className={styles.blog_card}>
       <div className={styles.blog_card_2}>
@@ -16,7 +29,7 @@ export const BlogCard = ({ blog }) => {
           ></img>
           <h6>{blog.author.name}</h6>
         </span>
-        <span className={styles.blog_card_2_2}>
+        <span onClick={handleBlog} className={styles.blog_card_2_2}>
           <h4>{blog.title}</h4>
         </span>
         <span className={styles.blog_card_2_4}>
@@ -25,7 +38,7 @@ export const BlogCard = ({ blog }) => {
         <span className={styles.blog_card_2_3}>
           <span>
             <p>{date} · {time} min read · </p>
-            <span>{blog.topic.title}</span>
+            <span onClick={() => { handleDispatch(blog.topic.title)}}>{blog.topic.title}</span>
             <svg
               width="15"
               height="15"
@@ -45,7 +58,7 @@ export const BlogCard = ({ blog }) => {
           </span>
         </span>
       </div>
-      <div className={styles.blog_card_1}>
+      <div onClick={handleBlog} className={styles.blog_card_1}>
         <img
           src={blog.featureImg}
           alt=""

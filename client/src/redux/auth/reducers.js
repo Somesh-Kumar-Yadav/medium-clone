@@ -10,8 +10,11 @@ import {
 	GET_BLOGS_REQUEST,
 	GET_BLOGS_SUCCESS,
 	GET_BLOGS_FAILURE,
+	GET_SINGLE_BLOG,
 } from "./actionTypes";
 import { loadData, saveData } from "../../utils/localStorage";
+import { blogExample } from "../../utils/example";
+
 const isAuth = loadData("isAuth");
 const user = loadData("user");
 const initState = {
@@ -23,6 +26,7 @@ const initState = {
 	isError: false,
 	isLoading: false,
 	topicBlogs: [],
+	singleBlog: blogExample,
 };
 export const authReducer = (state = initState, { type, payload }) => {
 	switch (type) {
@@ -97,6 +101,11 @@ export const authReducer = (state = initState, { type, payload }) => {
 				...state,
 				isError: true,
 				isLoading: false,
+			};
+		case GET_SINGLE_BLOG:
+			return {
+				...state,
+				singleBlog: payload,
 			};
 		default:
 			return state;

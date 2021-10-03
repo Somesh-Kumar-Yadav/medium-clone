@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import React from "react"
+import styles from "../../styles/Blog.module.css"
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,22 +23,38 @@ const Wrapper = styled.div`
     align-items: center;
 
     button {
-      background: rgb(0, 152, 201);
       padding: 10px 20px;
       border-radius: 18px;
       border: none;
       color: white;
+      background: ${props => (props.val) ? "rgb(0, 152, 201)" : "green"};
     }
   }
 `;
 
-export const FollowNav = () => {
+export const FollowNav = ({ data }) => {
+
+  console.log(data);
+  const [val ,setVal] = React.useState(true)
+  const [follow, setFollow] = React.useState(data.author.followers);
+  const user = useSelector(state => state.auth.user.user);
+  React.useEffect(() => {
+    if (follow.length && follow.includes(user._id)) {
+      setVal(false);
+    }
+  },[user._id,follow])
+  const handleFollow = () => {
+    if (val) { 
+      setFollow([...follow,user._id])
+    }
+    setVal(false)
+  }
   return (
     <>
-      <Wrapper>
+      <Wrapper val={val}>
         <div className="flex">
-          <button>Follow</button>
-          <p>{"10k"} Followers</p>
+          {val?<button className={styles.followbtn} onClick={handleFollow}>Follow</button>:<button className={styles.followedbtn} onClick={handleFollow}>Followed</button>}
+          <p>{follow.length} Followers</p>
           <p> Editor's picks</p>
           <p>Recieve our newsletter</p>
           <p>Publish a story</p>

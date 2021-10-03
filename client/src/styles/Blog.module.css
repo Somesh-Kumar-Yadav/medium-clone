@@ -1,0 +1,7 @@
+.followbtn {
+	cursor: pointer;
+}
+.followedbtn {
+	cursor: pointer;
+	background: green;
+}
