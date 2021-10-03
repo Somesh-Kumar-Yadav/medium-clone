@@ -93,7 +93,7 @@ export const BlogBody = ({ data }) => {
           <div className="authorDesc">
             <div className="div1">
               <div className="imgDiv">
-                <img src={imageUrl} alt="" />
+                <img src={data.author.imageUrl} alt="" />
               </div>
               <p>{author.name}</p>
               <p>{`${date}`}</p>

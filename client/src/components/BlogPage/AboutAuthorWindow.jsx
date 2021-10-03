@@ -20,8 +20,8 @@ const Wrapper = styled.div`
   color: rgb(117, 117, 117);
 
   .imgDiv {
-    width: 25px;
-    height: 25px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     overflow: hidden;
 
@@ -70,14 +70,13 @@ const Wrapper = styled.div`
 export const AboutAuthorWindow = ({ data }) => {
   const [open, setOpen] = useState(false);
 
-  const [active, setActive] = useState(false);
+  // const [active, setActive] = useState(false);
 
   const [likes, setLikes] = useState(data.claps);
   const [comments, setComments] = useState(data.comments);
   const [text,setText] = useState("")
   const user = useSelector(state => state.auth.user.user);
   const dispatch = useDispatch();
-  console.log(data);
   const handleClaps = () => {
     axios.patch(`http://localhost:2345/blogs/${data._id}`, { claps: likes + 1 });
     data.claps += 1;
@@ -177,24 +176,15 @@ export const AboutAuthorWindow = ({ data }) => {
   if (data) {
     name = data.author.name;
   }
-
-  const handleInp = (e) => {
-    if (e.target.value !== "") {
-      setActive(true);
-    }
-  };
-
-  const handlePost = () => {};
-
   return (
     <>
       {scrollY > 100
         ? data && (
             <Wrapper>
-              <p>{name}</p>
               <div className="imgDiv">
-                <img src={imageUrl} alt="" />
+                <img src={data.author.imageUrl} alt="" />
               </div>
+              <p>{name}</p>
               <div className="follow">
                 <button className="">Follow</button>
               </div>
@@ -231,16 +221,8 @@ export const AboutAuthorWindow = ({ data }) => {
             <i onClick={() => setOpen(false)} class="fas fa-times"></i>
           </div>
           <div className={classes.inpDiv}>
-            <div
-              onClick={handlePost}
-              style={{ color: active ? "limegreen" : "black" }}
-              className={classes.sendIcon}
-            >
-              <i class="fas fa-paper-plane"></i>
-            </div>
             <input
               className={classes.input}
-              onKeyDown={handleInp}
               type="text"
               name=""
               id=""
@@ -248,7 +230,7 @@ export const AboutAuthorWindow = ({ data }) => {
               onChange={(e)=>{setText(e.target.value)}}
               placeholder="What's your thoughts"
             />
-            <button onClick={handleComments} className={classes.inpBtn}>&gt;</button>
+            <button onClick={handleComments} className={classes.inpBtn}> <i class="fas fa-paper-plane"></i></button>
           </div>
           <div className={classes.comments}>
             {comments?.map((el) => (

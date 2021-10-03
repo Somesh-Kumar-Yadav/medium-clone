@@ -33,8 +33,6 @@ const Wrapper = styled.div`
 `;
 
 export const FollowNav = ({ data }) => {
-
-  console.log(data);
   const [val ,setVal] = React.useState(true)
   const [follow, setFollow] = React.useState(data.author.followers);
   const user = useSelector(state => state.auth.user.user);
