@@ -96,6 +96,7 @@
 	flex-direction: column;
 	margin-left: 20px;
 	cursor: pointer;
+	width: 200px;
 }
 .follow_person_cont_1 > span {
 	margin: 5px;

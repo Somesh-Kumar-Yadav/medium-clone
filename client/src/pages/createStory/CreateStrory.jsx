@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoginSignup from "../../components/LoginSignup/LoginSignup";
 import Profile from "../../components/Profile/Profile";
 import { postBlogs } from "../../redux/user/actions";
+import { useHistory } from "react-router";
 
 const CreateStrory = () => {
   const [open, setOpen] = useState(true);
@@ -17,6 +18,7 @@ const CreateStrory = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [topic, setTopic] = useState("");
+  const history = useHistory();
   const user = useSelector((state) => state.auth.user.user);
   const dispatch = useDispatch();
   const submitData = () => {
@@ -32,6 +34,7 @@ const CreateStrory = () => {
     data.append("author", user._id);
     data.append("topic", topic);
     dispatch(postBlogs(data));
+    history.pushState("/");
   };
   if (!user) {
     return <LoginSignup status={open} set={setOpen} />;
