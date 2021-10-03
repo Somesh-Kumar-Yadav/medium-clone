@@ -88,7 +88,7 @@ export const AboutAuthorWindow = ({ data }) => {
   };
   const handleComments = () => {
     axios.patch(`http://localhost:2345/blogs/${data._id}`, {
-      comments: [{ author: "6156a349b35627007c8aec34", text: "First Comment" }],
+      comments: [{ author: user._id, text: text }],
     });
     data.comments = [
       ...data.comments,
