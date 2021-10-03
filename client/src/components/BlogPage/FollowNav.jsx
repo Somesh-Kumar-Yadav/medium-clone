@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import React from "react"
 import styles from "../../styles/Blog.module.css"
+import axios from "axios";
 
 
 const Wrapper = styled.div`
@@ -45,7 +46,8 @@ export const FollowNav = ({ data }) => {
     if (val) { 
       setFollow([...follow,user._id])
     }
-    setVal(false)
+    axios.post(`http://localhost:2345/${user._id}/follow/${data.author._id}`);
+    setVal(false);
   }
   return (
     <>
