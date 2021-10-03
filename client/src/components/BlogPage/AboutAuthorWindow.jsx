@@ -5,7 +5,7 @@ import { useState } from "react";
 import axios from "axios"
 import { useDispatch ,useSelector} from "react-redux";
 import useScrollPosition from "@react-hook/window-scroll";
-import {blogsSingleSuccess} from "../../redux/auth/actions"
+import {blogsSingleSuccess, refreshData} from "../../redux/auth/actions"
 
 const Wrapper = styled.div`
   position: fixed;
@@ -82,6 +82,7 @@ export const AboutAuthorWindow = ({ data }) => {
     data.claps += 1;
     dispatch(blogsSingleSuccess(data))
     setLikes(likes + 1);
+    dispatch(refreshData())
   }
   const handleComments = () => {
     axios.patch(`http://localhost:2345/blogs/${data._id}`, {"comments":[{"author":"6156a349b35627007c8aec34","text":"First Comment"}]});
@@ -89,6 +90,7 @@ export const AboutAuthorWindow = ({ data }) => {
     dispatch(blogsSingleSuccess(data))
     setComments([...comments, { author: { name: user.name, imageUrl: user.imageUrl }, text: text }]);
     setText("")
+    dispatch(refreshData())
   }
   const useStyles = makeStyles({
     drawerDiv: {

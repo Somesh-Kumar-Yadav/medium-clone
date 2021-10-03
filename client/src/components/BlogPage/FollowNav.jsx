@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React from "react"
 import styles from "../../styles/Blog.module.css"
 import axios from "axios";
+import { refreshData } from "../../redux/auth/actions";
 
 
 const Wrapper = styled.div`
@@ -37,6 +38,7 @@ export const FollowNav = ({ data }) => {
   const [val ,setVal] = React.useState(true)
   const [follow, setFollow] = React.useState(data.author.followers);
   const user = useSelector(state => state.auth.user.user);
+  const dispatch = useDispatch()
   React.useEffect(() => {
     if (follow.length && follow.includes(user._id)) {
       setVal(false);
@@ -47,6 +49,7 @@ export const FollowNav = ({ data }) => {
       setFollow([...follow,user._id])
     }
     axios.post(`http://localhost:2345/${user._id}/follow/${data.author._id}`);
+     dispatch(refreshData())
     setVal(false);
   }
   return (

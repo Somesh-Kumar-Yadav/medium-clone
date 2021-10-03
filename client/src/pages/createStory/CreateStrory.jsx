@@ -10,6 +10,7 @@ import LoginSignup from "../../components/LoginSignup/LoginSignup";
 import Profile from "../../components/Profile/Profile";
 import { postBlogs } from "../../redux/user/actions";
 import { useHistory } from "react-router";
+import { refreshData } from "../../redux/auth/actions";
 
 const CreateStrory = () => {
   const [open, setOpen] = useState(true);
@@ -34,7 +35,8 @@ const CreateStrory = () => {
     data.append("author", user._id);
     data.append("topic", topic);
     dispatch(postBlogs(data));
-    history.pushState("/");
+    dispatch(refreshData())
+    history.push("/");
   };
   if (!user) {
     return <LoginSignup status={open} set={setOpen} />;
