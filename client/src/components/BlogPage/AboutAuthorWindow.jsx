@@ -3,7 +3,7 @@ import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
 import axios from "axios"
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector} from "react-redux";
 import useScrollPosition from "@react-hook/window-scroll";
 import {blogsSingleSuccess} from "../../redux/auth/actions"
 
@@ -58,6 +58,9 @@ const Wrapper = styled.div`
 export const AboutAuthorWindow = ({ data }) => {
   const [open, setOpen] = useState(false);
   const [likes, setLikes] = useState(data.claps);
+  const [comments, setComments] = useState(data.comments);
+  const [text,setText] = useState("")
+  const user = useSelector(state => state.auth.user.user);
   const dispatch = useDispatch();
   console.log(data);
   const handleClaps = () => {
@@ -65,6 +68,13 @@ export const AboutAuthorWindow = ({ data }) => {
     data.claps += 1;
     dispatch(blogsSingleSuccess(data))
     setLikes(likes + 1);
+  }
+  const handleComments = () => {
+    axios.patch(`http://localhost:2345/blogs/${data._id}`, {"comments":[{"author":"6156a349b35627007c8aec34","text":"First Comment"}]});
+    data.comments = [...data.comments,{author:{name:user.name,imageUrl:user.imageUrl},text:text}];
+    dispatch(blogsSingleSuccess(data))
+    setComments([...comments, { author: { name: user.name, imageUrl: user.imageUrl }, text: text }]);
+    setText("")
   }
   const useStyles = makeStyles({
     drawerDiv: {
@@ -84,10 +94,28 @@ export const AboutAuthorWindow = ({ data }) => {
 
     inpDiv: {
       width: "90%",
-      marign: "auto",
-      boder: "1px solid red",
+      margin: "auto",
+      // border: "1px solid red",
+      display:"flex"
     },
 
+    inpBtn: {
+      marginTop: "20px",
+      padding: "15px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems:"center",
+      marginBottom: "40px",
+      margin: "10px",
+      height: "43px",
+      fontSize: "20px",
+      width: "43px",
+      borderRadius: "50%",
+      color: "white",
+      background: "green",
+      border: "none",
+      cursor:"pointer"
+    },
     input: {
       height: "30px",
       padding: "20px 20px",
@@ -121,20 +149,12 @@ export const AboutAuthorWindow = ({ data }) => {
   });
 
   let name;
-  let comments;
 
   const classes = useStyles();
   const scrollY = useScrollPosition(60 /*fps*/);
   if (data) {
     name = data.author.name;
-    comments = [
-      {
-        urlImg:
-          "https://miro.medium.com/fit/c/32/32/1*8xG4y5aHwBYGgTjE9Zr0VQ.jpeg",
-        text: "I have one doubt about the first tip. If we create a base component and variant components, while searching in the Assests panel, it’ll display two components (both base component and variant’s first component). Is there any way to avoid that?",
-        author: { name: "name" },
-      },
-    ];
+    
   }
 
   return (
@@ -184,14 +204,17 @@ export const AboutAuthorWindow = ({ data }) => {
               type="text"
               name=""
               id=""
+              value={text}
+              onChange={(e)=>{setText(e.target.value)}}
               placeholder="What's your thoughts"
             />
+            <button onClick={handleComments} className={classes.inpBtn}>&gt;</button>
           </div>
           <div className={classes.comments}>
             {comments?.map((el) => (
               <div className={classes.commentsDiv}>
                 <div className={classes.commentsHeader}>
-                  <img className={classes.img} src={el.urlImg} alt="" />
+                  <img className={classes.img} src={el.author.imageUrl} alt="" />
                   <p>{el.author.name}</p>
                 </div>
                 <div>{el.text}</div>

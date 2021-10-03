@@ -15,7 +15,7 @@ export const BlogPost = () => {
   }
   return (
     <div>
-      <FollowNav />
+      <FollowNav data={data}/>
       <AboutAuthorWindow data={data} />
       <BlogBody data={data} />
     </div>
