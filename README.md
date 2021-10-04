@@ -67,6 +67,10 @@ MongoDB, Express, React, Node.js, Javascript, React-router-dom, Axios, Styled-co
 
 1. A user can register his account.
 2. User can also authenticate with OAuth.
+3. User can view blogs according to his selected topics.
+4. User can like and comment on a particular blog.
+5. User can follow authors as well as topics according to his choice.
+6. User can write his own blogs. 
 
 ## Authors
 
