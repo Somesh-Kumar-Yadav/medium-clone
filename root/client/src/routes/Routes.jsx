@@ -15,7 +15,6 @@ import TopicPage from "../components/TopicPage/TopicPage";
 export default function Routes() {
   const auth = Boolean(useSelector((state) => state.auth.isAuth));
   const load = Boolean(useSelector((state) => state.auth.isLoading));
-  //console.log(load);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getBlogs());
@@ -33,8 +32,8 @@ export default function Routes() {
           <WritePage />
         </Route>
         <Route path="/topic/:topic">
-          <TopicPage/>
-          </Route>
+          <TopicPage />
+        </Route>
         <Route path="/story">
           <OurStroryPage />
         </Route>

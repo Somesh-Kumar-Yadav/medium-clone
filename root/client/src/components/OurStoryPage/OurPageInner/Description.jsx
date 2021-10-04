@@ -1,37 +1,11 @@
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  margin: auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: space-around;
-  align-items: center;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  font-size: 1.1rem;
-
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-  }
-  .svgSphere {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-left: 1px solid black;
-  }
-`;
-
+import {Wrapper4} from "../../../styled-components/components"
+import styles from "../../../styles/Stories.module.css"
 export const Description = () => {
   return (
     <>
-      <Wrapper>
-        <div style={{ width: "75%", margin: "auto" }}>
-          <p style={{ paddingTop: "30px" }}>
+      <Wrapper4>
+        <div className={styles.des_cont}>
+          <p className={styles.des_cont_para_1}>
             The best ideas can change who we are. Medium is where those ideas
             take shape, take off, and spark powerful conversations. We’re an
             open platform where over 100 million readers come to find insightful
@@ -41,7 +15,7 @@ export const Description = () => {
             world.
           </p>
           <br />
-          <p style={{ paddingBottom: "30px" }}>
+          <p className={styles.des_cont_para_2}>
             {" "}
             We’re creating a new model for digital publishing. One that supports
             nuance, complexity, and vital storytelling without giving in to the
@@ -58,10 +32,10 @@ export const Description = () => {
             title="svg Sphere"
             src="https://player.vimeo.com/video/467834328?api=1&background=1&mute=1&loop=1"
             frameBorder="0"
-            style={{ height: "400px", width: "400px" }}
+            className={styles.iframe_1}
           ></iframe>
         </div>
-      </Wrapper>
+      </Wrapper4>
     </>
   );
 };

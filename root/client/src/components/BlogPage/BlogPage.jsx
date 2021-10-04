@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import LoginSignup from "../LoginSignup/LoginSignup";
 import { AboutAuthorWindow } from "./AboutAuthorWindow";
@@ -8,8 +8,6 @@ import { NavBar } from "../LandingPage/NavBar";
 import { HomePageNavBar } from "../HomePage/HomePageNavBar";
 
 export const BlogPost = () => {
-
-  useEffect(() => { }, []);
   const [open, setOpen] = useState(true);
   const data = useSelector((state) => state.auth.singleBlog);
   const auth = Boolean(useSelector(state => state.auth.isAuth))
@@ -17,7 +15,6 @@ export const BlogPost = () => {
   if (!user) {
     return <LoginSignup status={open} set={setOpen} />;
   }
-
   return (
     <div>
       {auth ? <HomePageNavBar/>:<NavBar />}
@@ -27,4 +24,3 @@ export const BlogPost = () => {
     </div>
   );
 };
-// "6156b1e9b35627007c8aec4b"

@@ -46,7 +46,6 @@ export const topicSelect = (payload) => {
 export const getUserData = (payload) => (dispatch) => {
 	try {
 		dispatch(getRequest());
-		//console.log(payload);
 		axios.get(`http://localhost:2345/${payload}/topics`).then((res) => {
 			dispatch(getFollowingTopic(res.data.topics));
 		});

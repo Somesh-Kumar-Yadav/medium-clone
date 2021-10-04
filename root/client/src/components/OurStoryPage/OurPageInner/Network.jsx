@@ -70,7 +70,7 @@ export const Network = () => {
         </div>
         <div className="profiles">
           {arr.map((el, i) => (
-            <Profiles key={el} name={el} index={i} />
+            <Profiles key={i} name={el} index={i} />
           ))}
         </div>
         <div className="filler"> 00 </div>
