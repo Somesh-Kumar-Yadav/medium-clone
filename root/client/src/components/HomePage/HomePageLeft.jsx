@@ -24,7 +24,7 @@ export const HomePageLeft = () => {
       <div className={styles.home_page_left_top}>
         <span className={styles.home_topics_heading}>Your Topics</span>
         {topics.map((item, i) => {
-          return <div onClick={() => { handleNav(item.title)}}><HomePageTopics key={i} topic={item} /></div>;
+          return <div key={i} onClick={() => { handleNav(item.title)}}><HomePageTopics topic={item} /></div>;
         })}
       </div>
       <div className={styles.home_page_left_mid}>
