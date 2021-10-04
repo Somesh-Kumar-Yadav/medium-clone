@@ -67,3 +67,10 @@ MongoDB, Express, React, Node.js, Javascript, React-router-dom, Axios, Styled-co
 
 1. A user can register his account.
 2. User can also authenticate with OAuth.
+
+## Authors
+
+- [@Somesh-Kumar-Yadav](https://github.com/Somesh-Kumar-Yadav)
+- [@Debasish Ransingh](https://github.com/Ransingh88)
+- [@Bharadwaj Bhat](https://github.com/bharadwaj-bhat)
+- [@Manish Singh](https://github.com/ManishSinghBhadouria)
