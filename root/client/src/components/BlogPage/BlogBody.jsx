@@ -86,7 +86,7 @@ export const BlogBody = ({ data }) => {
   const date = convertDates(data.createdAt);
   const time = convertMin(data.text);
 
-  console.log("text", text[0]);
+  //console.log("text", text[0]);
 
   return (
     <Wrapper>

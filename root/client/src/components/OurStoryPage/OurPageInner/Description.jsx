@@ -57,7 +57,7 @@ export const Description = () => {
           <iframe
             title="svg Sphere"
             src="https://player.vimeo.com/video/467834328?api=1&background=1&mute=1&loop=1"
-            frameborder="0"
+            frameBorder="0"
             style={{ height: "400px", width: "400px" }}
           ></iframe>
         </div>

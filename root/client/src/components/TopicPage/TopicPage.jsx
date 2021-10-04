@@ -10,7 +10,7 @@ const TopicPage = () => {
   const { topic } = useParams();
   const auth = Boolean(useSelector(state => state.auth.isAuth))
   const data = useSelector((state) => state.auth.topicBlogs);
-  console.log(data)
+  //console.log(data)
   return (
     <div>
        {auth ? <HomePageNavBar/>:<NavBar />}

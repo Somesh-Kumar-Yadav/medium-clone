@@ -46,7 +46,7 @@ export const topicSelect = (payload) => {
 export const getUserData = (payload) => (dispatch) => {
 	try {
 		dispatch(getRequest());
-		console.log(payload);
+		//console.log(payload);
 		axios.get(`http://localhost:2345/${payload}/topics`).then((res) => {
 			dispatch(getFollowingTopic(res.data.topics));
 		});
@@ -70,7 +70,7 @@ export const postBlogs = (payload) => (dispatch) => {
 	try {
 		dispatch(postRequest());
 		axios.post("http://localhost:2345/blogs", payload, config).then((res) => {
-			console.log(res.data);
+			//console.log(res.data);
 			dispatch(postSuccess());
 		});
 	} catch (e) {
