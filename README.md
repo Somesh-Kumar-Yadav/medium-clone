@@ -72,6 +72,32 @@ MongoDB, Express, React, Node.js, Javascript, React-router-dom, Axios, Styled-co
 5. User can follow authors as well as topics according to his choice.
 6. User can write his own blogs. 
 
+# Glimpse of website
+
+1. Langing Page
+
+![Landing Page](https://github.com/ManishSinghBhadouria/api/blob/gh-pages/Medium.com-Images/Homepage.png?raw=true)
+
+2. Login-Signup Page
+
+![Login-Signup page](https://github.com/ManishSinghBhadouria/api/blob/gh-pages/Medium.com-Images/Login-Popup-Page.png?raw=true)
+
+3. OAuth Google Login
+
+![OAuth Google](https://github.com/ManishSinghBhadouria/api/blob/gh-pages/Medium.com-Images/Google-Auth-Login-Page.png?raw=true)
+
+4. Homepage
+
+![HomePage](https://github.com/ManishSinghBhadouria/api/blob/gh-pages/Medium.com-Images/Home-Page-After-Login.png?raw=true)
+
+5. Write a Blog Page
+
+![Write](https://github.com/ManishSinghBhadouria/api/blob/gh-pages/Medium.com-Images/Post-Blog-Page.png?raw=true)
+
+4. Posted Blog Page
+
+![Blog Page](https://github.com/ManishSinghBhadouria/api/blob/gh-pages/Medium.com-Images/Posted-Blogs.png?raw=true)
+
 ## Authors
 
 - [@Somesh-Kumar-Yadav](https://github.com/Somesh-Kumar-Yadav)
